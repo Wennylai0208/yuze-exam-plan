@@ -15,403 +15,204 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
   :root{
-    --bg:#F3F5F3;
-    --surface:#FFFFFF;
-    --surface-2:#EAEDEA;
-    --ink:#1B222A;
-    --muted:#69737E;
-    --rule:#D8DDDA;
-    --rule-soft:#E7EBE8;
-    --pen:#BE3A2B;
-    --mark:#F5CE3E;
-    --mark-soft:#FBEFB8;
-    --s-guo:#A8452A;
-    --s-shu:#1F5F9E;
-    --s-li:#1C7660;
-    --s-she:#6A4A99;
-    --s-ying:#77808A;
-    --k-pre:#2E7D52;
-    --k-rev:#1F5F9E;
-    --k-back:#B35C1E;
-    --k-pre-bg:#E4F0E8;
-    --k-rev-bg:#E3ECF6;
-    --k-back-bg:#F7E9DC;
+    --bg:#F3F5F3; --surface:#FFFFFF; --surface-2:#EAEDEA; --ink:#1B222A; --muted:#69737E;
+    --rule:#D8DDDA; --rule-soft:#E7EBE8; --pen:#BE3A2B; --mark:#F5CE3E; --mark-soft:#FBEFB8;
+    --s-guo:#A8452A; --s-shu:#1F5F9E; --s-li:#1C7660; --s-she:#6A4A99; --s-ying:#77808A;
+    --k-pre:#2E7D52; --k-rev:#1F5F9E; --k-back:#B35C1E;
+    --k-pre-bg:#E4F0E8; --k-rev-bg:#E3ECF6; --k-back-bg:#F7E9DC;
     --shadow:0 1px 2px rgba(27,34,42,.06), 0 8px 24px rgba(27,34,42,.05);
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --bg:#111519;
-      --surface:#191F25;
-      --surface-2:#212932;
-      --ink:#E4E9ED;
-      --muted:#98A3AE;
-      --rule:#2B343D;
-      --rule-soft:#232B33;
-      --pen:#E8705F;
-      --mark:#E8C144;
-      --mark-soft:#413714;
-      --s-guo:#E0866A;
-      --s-shu:#6FA8DC;
-      --s-li:#5CBBA1;
-      --s-she:#A98CD8;
-      --s-ying:#9AA5B0;
-      --k-pre:#7ECBA0;
-      --k-rev:#7FB6E6;
-      --k-back:#E6A46B;
-      --k-pre-bg:#1B2E24;
-      --k-rev-bg:#1A2733;
-      --k-back-bg:#33251A;
+      --bg:#111519; --surface:#191F25; --surface-2:#212932; --ink:#E4E9ED; --muted:#98A3AE;
+      --rule:#2B343D; --rule-soft:#232B33; --pen:#E8705F; --mark:#E8C144; --mark-soft:#413714;
+      --s-guo:#E0866A; --s-shu:#6FA8DC; --s-li:#5CBBA1; --s-she:#A98CD8; --s-ying:#9AA5B0;
+      --k-pre:#7ECBA0; --k-rev:#7FB6E6; --k-back:#E6A46B;
+      --k-pre-bg:#1B2E24; --k-rev-bg:#1A2733; --k-back-bg:#33251A;
       --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
     }
   }
   :root[data-theme="dark"]{
-    --bg:#111519;
-    --surface:#191F25;
-    --surface-2:#212932;
-    --ink:#E4E9ED;
-    --muted:#98A3AE;
-    --rule:#2B343D;
-    --rule-soft:#232B33;
-    --pen:#E8705F;
-    --mark:#E8C144;
-    --mark-soft:#413714;
-    --s-guo:#E0866A;
-    --s-shu:#6FA8DC;
-    --s-li:#5CBBA1;
-    --s-she:#A98CD8;
-    --s-ying:#9AA5B0;
-    --k-pre:#7ECBA0;
-    --k-rev:#7FB6E6;
-    --k-back:#E6A46B;
-    --k-pre-bg:#1B2E24;
-    --k-rev-bg:#1A2733;
-    --k-back-bg:#33251A;
+    --bg:#111519; --surface:#191F25; --surface-2:#212932; --ink:#E4E9ED; --muted:#98A3AE;
+    --rule:#2B343D; --rule-soft:#232B33; --pen:#E8705F; --mark:#E8C144; --mark-soft:#413714;
+    --s-guo:#E0866A; --s-shu:#6FA8DC; --s-li:#5CBBA1; --s-she:#A98CD8; --s-ying:#9AA5B0;
+    --k-pre:#7ECBA0; --k-rev:#7FB6E6; --k-back:#E6A46B;
+    --k-pre-bg:#1B2E24; --k-rev-bg:#1A2733; --k-back-bg:#33251A;
     --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
   }
-
   *{box-sizing:border-box}
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
+  body{margin:0;background:var(--bg);color:var(--ink);
     font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
-    font-size:16px;
-    line-height:1.7;
-    -webkit-font-smoothing:antialiased;
-  }
+    font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
   .wrap{max-width:800px;margin:0 auto;padding:0 20px 88px}
-
-  header{
-    padding:40px 20px 32px;
-    margin:0 0 34px;
-    border-bottom:1px solid var(--rule);
-    background:
-      linear-gradient(to right, var(--rule-soft) 1px, transparent 1px) 0 0/26px 26px,
-      linear-gradient(to bottom, var(--rule-soft) 1px, transparent 1px) 0 0/26px 26px,
-      var(--bg);
-  }
+  header{padding:40px 20px 32px;margin:0 0 34px;border-bottom:1px solid var(--rule);
+    background:linear-gradient(to right, var(--rule-soft) 1px, transparent 1px) 0 0/26px 26px,
+      linear-gradient(to bottom, var(--rule-soft) 1px, transparent 1px) 0 0/26px 26px, var(--bg);}
   header .wrap{padding-bottom:0}
-  .eyebrow{
-    font-family:"IBM Plex Mono",ui-monospace,monospace;
-    font-size:12px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--muted);margin:0 0 10px;
-  }
-  h1{
-    font-family:"Noto Serif TC",serif;
-    font-weight:700;font-size:clamp(30px,7vw,42px);line-height:1.25;
-    margin:0 0 14px;text-wrap:balance;letter-spacing:.01em;
-  }
-  .countdown{
-    display:inline-flex;align-items:baseline;gap:9px;
-    background:var(--surface);border:1px solid var(--rule);
-    border-left:4px solid var(--pen);
-    border-radius:7px;padding:7px 14px;margin:0 0 16px;box-shadow:var(--shadow);
-  }
-  .countdown .n{
-    font-family:"IBM Plex Mono",monospace;font-size:26px;font-weight:600;
-    color:var(--pen);font-variant-numeric:tabular-nums;line-height:1;
-  }
+  .eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--muted);margin:0 0 10px;}
+  h1{font-family:"Noto Serif TC",serif;font-weight:700;font-size:clamp(30px,7vw,42px);line-height:1.25;
+    margin:0 0 14px;text-wrap:balance;letter-spacing:.01em;}
+  .countdown{display:inline-flex;align-items:baseline;gap:9px;background:var(--surface);
+    border:1px solid var(--rule);border-left:4px solid var(--pen);border-radius:7px;
+    padding:7px 14px;margin:0 0 16px;box-shadow:var(--shadow);}
+  .countdown .n{font-family:"IBM Plex Mono",monospace;font-size:26px;font-weight:600;
+    color:var(--pen);font-variant-numeric:tabular-nums;line-height:1;}
   .countdown .t{font-size:13.5px;color:var(--muted)}
   .countdown .t b{color:var(--ink);font-weight:500}
   .sub{margin:0;color:var(--muted);max-width:46ch}
   .sub b{color:var(--ink);font-weight:500}
-
+  .goal{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;background:var(--surface);
+    border:1px solid var(--rule);border-left:4px solid var(--s-shu);border-radius:7px;
+    padding:8px 14px;margin:0 0 16px;box-shadow:var(--shadow);}
+  .goal .lab{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;color:var(--muted)}
+  .goal b{font-family:"Noto Serif TC",serif;font-size:19px;color:var(--s-shu);font-weight:700}
+  .goal .note{font-size:12.5px;color:var(--muted)}
   section{margin:0 0 42px}
-  h2{
-    font-family:"Noto Serif TC",serif;
-    font-size:21px;font-weight:600;margin:0 0 4px;letter-spacing:.02em;
-  }
+  h2{font-family:"Noto Serif TC",serif;font-size:21px;font-weight:600;margin:0 0 4px;letter-spacing:.02em;}
   .lede{margin:0 0 18px;color:var(--muted);font-size:14.5px}
-  .num{
-    font-family:"IBM Plex Mono",ui-monospace,monospace;
-    font-size:12px;color:var(--muted);letter-spacing:.14em;
-    display:block;margin-bottom:6px;
-  }
-
-  /* 段考範圍 */
+  .num{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:12px;color:var(--muted);
+    letter-spacing:.14em;display:block;margin-bottom:6px;}
   .scope{display:grid;gap:10px}
-  .scope-row{
-    display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;
-    background:var(--surface);border:1px solid var(--rule);border-radius:8px;
-    padding:12px 15px;box-shadow:var(--shadow);
-    border-left:4px solid var(--sc,var(--muted));
-  }
+  .scope-row{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:baseline;
+    background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:12px 15px;
+    box-shadow:var(--shadow);border-left:4px solid var(--sc,var(--muted));}
   .scope-name{font-weight:700;color:var(--sc);white-space:nowrap;font-size:15px}
   .scope-body{font-size:14.5px}
   .scope-body span{color:var(--muted)}
-  .weight{
-    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
-    color:var(--muted);border:1px solid var(--rule);border-radius:99px;
-    padding:1px 7px;margin-left:8px;vertical-align:2px;white-space:nowrap;
-  }
-
-  /* 一週節奏 */
-  .week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
-  .day{
-    background:var(--surface);border:1px solid var(--rule);border-radius:8px;
-    padding:10px 4px 11px;text-align:center;cursor:pointer;
-    box-shadow:var(--shadow);
-    transition:transform .12s ease, border-color .12s ease;
-    font:inherit;color:inherit;
-  }
-  .day:hover{transform:translateY(-2px)}
-  .day:focus-visible{outline:2px solid var(--pen);outline-offset:2px}
-  .day[aria-pressed="true"]{
-    border-color:var(--pen);
-    box-shadow:0 0 0 1px var(--pen), var(--shadow);
-  }
-  .day .d{font-family:"Noto Serif TC",serif;font-size:17px;font-weight:600}
-  .day .m{
-    font-family:"IBM Plex Mono",monospace;font-size:12.5px;
-    font-variant-numeric:tabular-nums;color:var(--muted);display:block;margin-top:2px;
-  }
-  .day .bar{display:block;height:4px;border-radius:2px;background:var(--load);margin:8px 6px 0}
-  .day .why{font-size:10.5px;color:var(--muted);display:block;margin-top:6px;line-height:1.35}
-  .load-xs{--load:#C9D3CC}
-  .load-s{--load:#9BC6A8}
-  .load-l{--load:#E0866A}
-
-  /* 今日菜單 */
-  .menu{
-    background:var(--surface);border:1px solid var(--rule);border-radius:10px;
-    box-shadow:var(--shadow);overflow:hidden;
-  }
-  .menu-head{
-    display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;justify-content:space-between;
-    padding:14px 16px;border-bottom:1px solid var(--rule);background:var(--surface-2);
-  }
+  .weight{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--muted);
+    border:1px solid var(--rule);border-radius:99px;padding:1px 7px;margin-left:8px;
+    vertical-align:2px;white-space:nowrap;}
+  .menu{background:var(--surface);border:1px solid var(--rule);border-radius:10px;
+    box-shadow:var(--shadow);overflow:hidden;margin-bottom:14px;}
+  .menu-head{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;justify-content:space-between;
+    padding:14px 16px;border-bottom:1px solid var(--rule);background:var(--surface-2);}
   .menu-head h3{margin:0;font-family:"Noto Serif TC",serif;font-size:17px;font-weight:600}
   .menu-head .sched{font-size:12.5px;color:var(--muted);flex-basis:100%;margin:0;line-height:1.55}
-  .menu-total{
-    font-family:"IBM Plex Mono",monospace;font-size:13px;font-variant-numeric:tabular-nums;
-    color:var(--muted);white-space:nowrap;
-  }
+  .menu-total{font-family:"IBM Plex Mono",monospace;font-size:13px;font-variant-numeric:tabular-nums;
+    color:var(--muted);white-space:nowrap;}
   .menu-total b{color:var(--ink);font-size:17px;font-weight:600}
-
-  .task{
-    display:grid;grid-template-columns:auto 5.1em 1fr;gap:11px;align-items:start;
-    padding:12px 16px;border-top:1px solid var(--rule-soft);
-  }
+  .task{display:grid;grid-template-columns:auto 5.1em 1fr;gap:11px;align-items:start;
+    padding:12px 16px;border-top:1px solid var(--rule-soft);}
   .task:first-child{border-top:none}
-  .task input{
-    appearance:none;width:19px;height:19px;margin:5px 0 0;flex:none;
+  .task input{appearance:none;width:19px;height:19px;margin:5px 0 0;flex:none;
     border:1.5px solid var(--rule);border-radius:5px;background:var(--surface);
-    cursor:pointer;position:relative;
-  }
+    cursor:pointer;position:relative;}
   .task input:checked{background:var(--pen);border-color:var(--pen)}
-  .task input:checked::after{
-    content:"";position:absolute;left:5.5px;top:2px;width:5px;height:10px;
-    border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg);
-  }
+  .task input:checked::after{content:"";position:absolute;left:5.5px;top:2px;width:5px;height:10px;
+    border:solid #fff;border-width:0 2px 2px 0;transform:rotate(42deg);}
   .task input:focus-visible{outline:2px solid var(--pen);outline-offset:2px}
-  .slot{
-    font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
-    padding-top:2px;line-height:1.35;
-  }
+  .slot{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;padding-top:2px;line-height:1.35;}
   .slot .a{display:block;font-size:14px;font-weight:600;color:var(--sc)}
   .slot .b{display:block;font-size:11.5px;color:var(--muted)}
   .task-body{font-size:14.5px;line-height:1.6}
   .task-body .subj{color:var(--sc);font-weight:700}
   .task-body em{font-style:normal;color:var(--muted);display:block;font-size:13px}
-  .kind{
-    display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;
-    letter-spacing:.06em;padding:1px 7px;border-radius:4px;margin-right:8px;
-    vertical-align:1.5px;font-weight:600;color:var(--kc);background:var(--kb);
-  }
+  .kind{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.06em;
+    padding:1px 7px;border-radius:4px;margin-right:8px;vertical-align:1.5px;font-weight:600;
+    color:var(--kc);background:var(--kb);}
   .k-pre{--kc:var(--k-pre);--kb:var(--k-pre-bg)}
   .k-rev{--kc:var(--k-rev);--kb:var(--k-rev-bg)}
   .k-back{--kc:var(--k-back);--kb:var(--k-back-bg)}
   .task.done .task-body{opacity:.45;text-decoration:line-through;text-decoration-thickness:1px}
-
-  .brk{
-    display:grid;grid-template-columns:auto 5.1em 1fr;gap:11px;align-items:center;
+  .brk{display:grid;grid-template-columns:auto 5.1em 1fr;gap:11px;align-items:center;
     padding:6px 16px;border-top:1px dashed var(--rule);background:var(--surface-2);
-    font-size:12.5px;color:var(--muted);
-  }
+    font-size:12.5px;color:var(--muted);}
   .brk .slot .a{color:var(--muted);font-size:12.5px;font-weight:500}
   .brk span:first-child{width:19px}
-
-  .menu-foot{
-    padding:11px 16px;border-top:1px solid var(--rule);background:var(--surface-2);
-    font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;align-items:center;
-  }
-  .reset{
-    font:inherit;font-size:12.5px;background:none;border:1px solid var(--rule);
-    color:var(--muted);border-radius:6px;padding:3px 10px;cursor:pointer;white-space:nowrap;
-  }
+  .menu-foot{padding:11px 16px;border-top:1px solid var(--rule);background:var(--surface-2);
+    font-size:13px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;align-items:center;}
+  .reset{font:inherit;font-size:12.5px;background:none;border:1px solid var(--rule);color:var(--muted);
+    border-radius:6px;padding:3px 10px;cursor:pointer;white-space:nowrap;}
   .reset:hover{color:var(--ink);border-color:var(--muted)}
   .reset:focus-visible{outline:2px solid var(--pen);outline-offset:2px}
-
-  /* 三種讀法 */
   .how{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
-  .how-card{
-    background:var(--surface);border:1px solid var(--rule);border-radius:8px;
-    padding:14px 15px;box-shadow:var(--shadow);border-top:3px solid var(--hc);
-  }
+  .how-card{background:var(--surface);border:1px solid var(--rule);border-radius:8px;padding:14px 15px;
+    box-shadow:var(--shadow);border-top:3px solid var(--hc);}
   .how-card h4{margin:0 0 4px;font-size:15px;font-weight:700}
   .how-card p{margin:0;font-size:13.5px;color:var(--muted);line-height:1.6}
-  .how-card .tag{
-    font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
-    color:var(--hc);display:block;margin-bottom:6px;
-  }
-
-  /* 六週地圖 */
+  .how-card .tag{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+    color:var(--hc);display:block;margin-bottom:6px;}
   .map-scroll{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--surface);box-shadow:var(--shadow)}
   table{border-collapse:collapse;width:100%;min-width:680px;font-size:13.5px}
   th,td{padding:10px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule-soft)}
-  thead th{
-    background:var(--surface-2);font-family:"IBM Plex Mono",monospace;font-size:11.5px;
-    letter-spacing:.1em;color:var(--muted);font-weight:500;white-space:nowrap;
-    border-bottom:1px solid var(--rule);
-  }
-  tbody th{
-    font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:12.5px;
-    color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums;
-    line-height:1.5;
-  }
+  thead th{background:var(--surface-2);font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+    letter-spacing:.1em;color:var(--muted);font-weight:500;white-space:nowrap;border-bottom:1px solid var(--rule);}
+  tbody th{font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:12.5px;color:var(--muted);
+    white-space:nowrap;font-variant-numeric:tabular-nums;line-height:1.5;}
   tbody th small{display:block;font-weight:400;font-size:11px;opacity:.8}
   tbody tr:last-child td,tbody tr:last-child th{border-bottom:none}
   tr.final td,tr.final th{background:var(--mark-soft)}
   tr.exam td,tr.exam th{background:var(--surface-2);border-top:2px solid var(--pen)}
   .c-guo{color:var(--s-guo)}.c-shu{color:var(--s-shu)}.c-li{color:var(--s-li)}
   .c-she{color:var(--s-she)}.c-ying{color:var(--s-ying)}
-
-  /* 鐵則 */
   .rules{list-style:none;padding:0;margin:0}
-  .rules li{
-    padding:12px 0 12px 34px;border-bottom:1px solid var(--rule-soft);
-    position:relative;font-size:14.5px;
-  }
+  .rules li{padding:12px 0 12px 34px;border-bottom:1px solid var(--rule-soft);position:relative;font-size:14.5px;}
   .rules li:last-child{border-bottom:none}
-  .rules li::before{
-    content:attr(data-n);position:absolute;left:0;top:12px;
-    font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--pen);font-weight:600;
-  }
+  .rules li::before{content:attr(data-n);position:absolute;left:0;top:12px;
+    font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--pen);font-weight:600;}
   .rules b{border-bottom:2px solid var(--mark);padding-bottom:1px}
-
-  footer{
-    margin-top:8px;padding-top:18px;border-top:1px solid var(--rule);
-    font-size:12.5px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
-  }
+  .note-box{background:var(--surface-2);border:1px dashed var(--rule);border-radius:8px;
+    padding:12px 15px;font-size:13px;color:var(--muted);margin:0 0 20px;}
+  .note-box b{color:var(--ink)}
+  .wk-divider{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;
+    color:var(--pen);margin:26px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule);}
+  footer{margin-top:8px;padding-top:18px;border-top:1px solid var(--rule);font-size:12.5px;
+    color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
   footer .sig{font-family:"IBM Plex Mono",monospace;letter-spacing:.08em}
-
-  @media (max-width:600px){
-    .week{gap:4px}
-    .day{padding:8px 2px 9px}
-    .day .why{display:none}
-    .day .d{font-size:15px}
-    .day .m{font-size:11px}
-    .scope-row{grid-template-columns:1fr;gap:2px}
-    .task,.brk{grid-template-columns:auto 4.7em 1fr;gap:9px;padding-left:13px;padding-right:13px}
-  }
-  @media (prefers-reduced-motion:reduce){
-    *{transition:none!important}
-    .day:hover{transform:none}
-  }
-
-  .goal{
-    display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;
-    background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--s-shu);
-    border-radius:7px;padding:8px 14px;margin:0 0 16px;box-shadow:var(--shadow);
-  }
-  .goal .lab{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.16em;color:var(--muted)}
-  .goal b{font-family:"Noto Serif TC",serif;font-size:19px;color:var(--s-shu);font-weight:700}
-  .goal .note{font-size:12.5px;color:var(--muted)}
-  /* 日期條 */
   .datebar{position:relative}
-  .dates{
-    display:flex;gap:6px;overflow-x:auto;padding:2px 2px 10px;
-    scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;
-  }
+  .dates{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 10px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;}
   .dates::-webkit-scrollbar{height:6px}
   .dates::-webkit-scrollbar-thumb{background:var(--rule);border-radius:3px}
-  .dchip{
-    flex:none;scroll-snap-align:center;width:56px;
-    background:var(--surface);border:1px solid var(--rule);border-radius:9px;
-    padding:7px 2px 8px;text-align:center;cursor:pointer;font:inherit;color:inherit;
-    box-shadow:var(--shadow);transition:transform .12s ease;
-  }
+  .dchip{flex:none;scroll-snap-align:center;width:56px;background:var(--surface);border:1px solid var(--rule);
+    border-radius:9px;padding:7px 2px 8px;text-align:center;cursor:pointer;font:inherit;color:inherit;
+    box-shadow:var(--shadow);transition:transform .12s ease;}
   .dchip:hover{transform:translateY(-2px)}
   .dchip:focus-visible{outline:2px solid var(--pen);outline-offset:2px}
   .dchip .wd{font-family:"Noto Serif TC",serif;font-size:13px;font-weight:600;display:block}
-  .dchip .dt{
-    font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);
-    display:block;font-variant-numeric:tabular-nums;margin-top:1px;
-  }
+  .dchip .dt{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--muted);
+    display:block;font-variant-numeric:tabular-nums;margin-top:1px;}
   .dchip .bar{display:block;height:4px;border-radius:2px;background:var(--load);margin:6px 8px 0}
   .dchip[aria-pressed="true"]{border-color:var(--pen);box-shadow:0 0 0 1px var(--pen),var(--shadow)}
   .dchip.today .dt{color:var(--pen);font-weight:600}
   .dchip.exam{background:var(--mark-soft);border-color:var(--pen)}
   .dchip.done .bar{background:var(--pen)}
-  .wknav{
-    display:flex;gap:8px;align-items:center;justify-content:space-between;
-    margin-bottom:8px;font-size:13px;color:var(--muted);
-  }
-  .wknav button{
-    font:inherit;font-size:13px;background:var(--surface);border:1px solid var(--rule);
-    color:var(--ink);border-radius:7px;padding:4px 12px;cursor:pointer;
-  }
+  .load-xs{--load:#C9D3CC} .load-s{--load:#9BC6A8} .load-l{--load:#E0866A}
+  .wknav{display:flex;gap:8px;align-items:center;justify-content:space-between;margin-bottom:8px;font-size:13px;color:var(--muted);}
+  .wknav button{font:inherit;font-size:13px;background:var(--surface);border:1px solid var(--rule);
+    color:var(--ink);border-radius:7px;padding:4px 12px;cursor:pointer;}
   .wknav button:hover{border-color:var(--muted)}
   .wknav button:focus-visible{outline:2px solid var(--pen);outline-offset:2px}
   .wknav .wk{font-family:"IBM Plex Mono",monospace;letter-spacing:.06em}
-  .wk-topic{
-    display:flex;flex-wrap:wrap;gap:3px 12px;font-size:12px;margin:0 0 14px;
-    padding:9px 12px;background:var(--surface-2);border-radius:8px;
-  }
+  .wk-topic{display:flex;flex-wrap:wrap;gap:3px 12px;font-size:12px;margin:0 0 14px;
+    padding:9px 12px;background:var(--surface-2);border-radius:8px;}
   .menu-head .hol{color:var(--pen);font-size:13px;margin-left:6px}
-  .day-exam{
-    padding:26px 18px;text-align:center;
+  .day-exam{padding:26px 18px;text-align:center;}
+  .day-exam .big{font-family:"Noto Serif TC",serif;font-size:22px;font-weight:700;color:var(--pen);
+    display:block;margin-bottom:6px;}
+  @media (max-width:600px){
+    .day{padding:8px 2px 9px}
+    .scope-row{grid-template-columns:1fr;gap:2px}
+    .task,.brk{grid-template-columns:auto 4.7em 1fr;gap:9px;padding-left:13px;padding-right:13px}
   }
-  .day-exam .big{
-    font-family:"Noto Serif TC",serif;font-size:22px;font-weight:700;color:var(--pen);
-    display:block;margin-bottom:6px;
-  }
-  .c-guo{color:var(--s-guo)}.c-shu{color:var(--s-shu)}.c-li{color:var(--s-li)}
-  .c-she{color:var(--s-she)}.c-ying{color:var(--s-ying)}
+  @media (prefers-reduced-motion:reduce){ *{transition:none!important} }
 </style>
 </head>
 <body>
-
-<header>
-  <div class="wrap">
-    <p class="eyebrow">115學年 上學期 · 石牌國中 819</p>
-    <h1>雨澤的段考作戰表</h1>
-    <div class="countdown">
-      <span class="n" id="cd">—</span>
-      <span class="t">天後段考　<b>10/12（一）· 10/13（二）</b></span>
-    </div>
-    <div class="goal"><span class="lab">目標</span><b>全班前 5</b><span class="note">目前約第 8 名 · 只要往上 3 名（819 班 31 人）</span></div>
-    <p class="sub">8/31 開學到 10/13 段考，<b>一天一天都有日期</b>。打開自動跳到今天，左右滑可以看別天。每一格都寫好幾點做什麼、是預習還是複習。</p>
-  </div>
-</header>
+<header><div class="wrap">
+  <p class="eyebrow">115學年 上學期 · 石牌國中 819 · 第一次段考（9/14 重排版）</p>
+  <h1>雨澤的段考作戰表</h1>
+  <div class="countdown"><span class="n" id="cd">—</span><span class="t">天後段考　<b>10/12（一）· 10/13（二）</b></span></div>
+  <div class="goal"><span class="lab">目標</span><b>全班前 5</b><span class="note">目前約第 8 名 · 只要往上 3 名（819 班）</span></div>
+  <p class="sub">9/14 全部重排，跟著<b>學校進度</b>走。打開自動跳到今天，左右滑可以看別天。<b>20:30–21:00 手機時間不排書</b>。</p>
+</div></header>
 
 <div class="wrap">
-
+<div class="note-box"><b>提醒：</b>這張表的科目進度是用開學第三週的合理推估排的。如果學校實際進度跟表上不一樣，跟 Vero 說一聲，我幫你改。</div>
 <section>
   <span class="num">01</span>
   <h2>今天要做什麼</h2>
   <p class="lede">照時段做，勾掉就好。勾不完不用有罪惡感——最上面那格做完就算及格。</p>
-
   <div class="datebar">
     <div class="wknav">
       <button type="button" id="prev">← 前一天</button>
@@ -420,9 +221,7 @@
     </div>
     <div class="dates" id="dates" role="group" aria-label="選擇日期"></div>
   </div>
-
   <div class="wk-topic" id="wktopic"></div>
-
   <div class="menu">
     <div class="menu-head">
       <h3 id="menu-day">—</h3>
@@ -431,18 +230,14 @@
       <p class="sched" id="menu-meta"></p>
     </div>
     <div id="tasks"></div>
-    <div class="menu-foot">
-      <span id="progress">還沒開始</span>
-      <button class="reset" id="reset" type="button">清掉勾勾</button>
-    </div>
+    <div class="menu-foot"><span id="progress">還沒開始</span><button class="reset" id="reset" type="button">清掉勾勾</button></div>
   </div>
 </section>
 
 <section>
   <span class="num">02</span>
-  
   <h2>要考的範圍</h2>
-  <p class="lede">五科規律一樣：都是前兩章／前面幾課，接著就是「第 1 次學力診斷評量」。</p>
+  <p class="lede">五科規律一樣：都是前面幾課／前兩章，接著就是「第 1 次學力診斷評量」。</p>
   <div class="scope">
     <div class="scope-row" style="--sc:var(--s-guo)">
       <div class="scope-name">國文<span class="weight">份量 多</span></div>
@@ -450,81 +245,66 @@
     </div>
     <div class="scope-row" style="--sc:var(--s-shu)">
       <div class="scope-name">數學<span class="weight">份量 多</span></div>
-      <div class="scope-body">第 1 章、第 2 章 <span>（乘法公式與多項式／二次方根與畢氏定理 · 開學拿到課本再確認）</span></div>
+      <div class="scope-body">第 1 章、第 2 章 <span>（數學最弱科，優先顧）</span></div>
     </div>
     <div class="scope-row" style="--sc:var(--s-li)">
       <div class="scope-name">理化<span class="weight">份量 多</span></div>
-      <div class="scope-body">第 1 章、第 2 章 <span>（測量與估計、體積密度、認識物質、溶液濃度、混合物分離）</span></div>
+      <div class="scope-body">第 1 章、第 2 章 <span>（觀念題容易錯，重點理解不要死背）</span></div>
     </div>
     <div class="scope-row" style="--sc:var(--s-she)">
       <div class="scope-name">社會<span class="weight">三科 各2章</span></div>
-      <div class="scope-body">
-        歷史 1、2 章 <span>商周至隋唐的國家社會／民族文化</span><br>
-        地理 1、2 章 <span>中國的地形／中國的氣候</span><br>
-        公民 1、2 章 <span>國家與民主政治／憲法與權利保障</span>
-      </div>
+      <div class="scope-body">歷史 1、2 章 · 地理 1、2 章 · 公民 1、2 章</div>
     </div>
     <div class="scope-row" style="--sc:var(--s-ying)">
       <div class="scope-name">英文<span class="weight">份量 少</span></div>
-      <div class="scope-body">第 1 課、第 2 課 <span>（平日短短掃一下維持手感，主力放在週日北車那堂）</span></div>
+      <div class="scope-body">第 1 課、第 2 課 <span>（份量少，超前中，平日輕鬆維持手感就好）</span></div>
     </div>
   </div>
-
 </section>
+
 
 <section>
   <span class="num">03</span>
-  
   <h2>三種讀法，不要搞混</h2>
   <div class="how">
     <div class="how-card" style="--hc:var(--k-pre)">
-      <span class="tag">預習</span>
-      <h4>只花 5～10 分</h4>
-      <p>明天學校要上的，翻開<b>只看標題、粗體字、圖</b>。看不懂是正常的，目的只是讓老師講的時候「欸這個我看過」。</p>
+      <span class="tag">預習</span><h4>只花 5～10 分</h4>
+      <p>明天學校要上的，翻開<b>只看標題、粗體字、圖</b>。看不懂是正常的，讓老師講的時候「欸這個我看過」。</p>
     </div>
     <div class="how-card" style="--hc:var(--k-rev)">
-      <span class="tag">複習</span>
-      <h4>主餐，最重要</h4>
-      <p>今天剛上完的，<b>當天晚上</b>做。先蓋起來自己講一次重點，講不出來的地方才翻書，然後動筆寫題目。</p>
+      <span class="tag">複習</span><h4>主餐，最重要</h4>
+      <p>今天剛上完的，<b>當天晚上</b>做。先蓋起來自己講一次重點，講不出來才翻書，然後動筆寫題目。</p>
     </div>
     <div class="how-card" style="--hc:var(--k-back)">
-      <span class="tag">回頭撈</span>
-      <h4>撈舊的</h4>
+      <span class="tag">回頭撈</span><h4>撈舊的</h4>
       <p>撈幾天前、上週教過的東西，<b>只寫題目不看書</b>。這一格就是段考前不用重學的原因。</p>
     </div>
   </div>
-
 </section>
+
 
 <section>
   <span class="num">04</span>
-  
-  <h2>六週地圖</h2>
-  <p class="lede">開學 8/31 到段考 10/12，剛好六週。學校進度可能快慢一點，以老師講到哪為準——這張只是讓你知道有沒有落後。</p>
+  <h2>四週衝刺地圖</h2>
+  <p class="lede">9/14 到段考 10/12，剛好四週多。學校進度可能快慢一點，以老師講到哪為準——這張只是讓你知道有沒有落後。</p>
   <div class="map-scroll">
     <table>
-      <thead>
-        <tr><th>週次</th><th>國文</th><th>數學</th><th>理化</th><th>社會</th><th>英文</th></tr>
-      </thead>
+      <thead><tr><th>週次</th><th>國文</th><th>數學</th><th>理化</th><th>社會</th><th>英文</th></tr></thead>
       <tbody>
-        <tr><th>第 1 週<small>8/31–9/6</small></th><td class="c-guo">第一課</td><td class="c-shu">1 章前半</td><td class="c-li">1 章 測量</td><td class="c-she">史1 · 地1</td><td class="c-ying">L1 單字</td></tr>
-        <tr><th>第 2 週<small>9/7–9/13</small></th><td class="c-guo">第一課收尾<br>第二課開始</td><td class="c-shu">1 章後半</td><td class="c-li">1 章 密度</td><td class="c-she">地1 · 公1</td><td class="c-ying">L1 課文</td></tr>
-        <tr><th>第 3 週<small>9/14–9/20</small></th><td class="c-guo">第二課</td><td class="c-shu">2 章前半</td><td class="c-li">2 章 物質</td><td class="c-she">史2 · 公1</td><td class="c-ying">L2 單字</td></tr>
-        <tr><th>第 4 週<small>9/21–9/27</small></th><td class="c-guo">第三課</td><td class="c-shu">2 章 畢氏</td><td class="c-li">2 章 濃度</td><td class="c-she">地2 · 公2</td><td class="c-ying">L2 課文</td></tr>
-        <tr><th>第 5 週<small>9/28–10/4</small></th><td class="c-guo">語文常識㈠<br>詞類</td><td class="c-shu">1+2 章<br>整章題目</td><td class="c-li">2 章 分離<br>＋計算題</td><td class="c-she">史地公<br>三科收尾</td><td class="c-ying">L1+L2 文法</td></tr>
-        <tr class="final"><th>第 6 週<small>10/5–10/11</small></th><td colspan="5"><b>衝刺週，不學新的東西。</b>只做兩件事：① 五科講義／評量<b>錯過的題目再寫一次</b>　② 每科寫一份完整考卷計時。</td></tr>
-        <tr class="exam"><th>段考<small>10/12–10/13</small></th><td colspan="5">考前一天<b>早睡</b>，比多讀一小時有用。考完當天不對答案，回家再說。</td></tr>
+        <tr><th>第 1 週<small>9/14–9/20</small></th><td class="c-guo">第二課</td><td class="c-shu">第1章</td><td class="c-li">第1章</td><td class="c-she">史1·地1·公1</td><td class="c-ying">L2 起步</td></tr>
+        <tr><th>第 2 週<small>9/21–9/27</small></th><td class="c-guo">第三課</td><td class="c-shu">第1→2章</td><td class="c-li">第1→2章</td><td class="c-she">史地公 1→2章</td><td class="c-ying">L2</td></tr>
+        <tr><th>第 3 週<small>9/28–10/4</small></th><td class="c-guo">語文常識㈠</td><td class="c-shu">全範圍複習</td><td class="c-li">全範圍複習</td><td class="c-she">三科收尾</td><td class="c-ying">L1+L2 文法</td></tr>
+        <tr class="final"><th>第 4 週<small>10/5–10/11</small></th><td colspan="5"><b>第二輪衝刺，不學新的東西。</b>① 每科寫一份小考題計時　② 錯題全部訂正　③ 10/10 國慶全科模考。</td></tr>
+        <tr class="exam"><th>段考<small>10/12–10/13</small></th><td colspan="5">不知道兩天各考哪幾科，前一晚<b>全科輕量重點回頭撈</b>。早睡比多讀一小時有用。</td></tr>
       </tbody>
     </table>
   </div>
-
 </section>
+
 
 <section>
   <span class="num">05</span>
-  
   <h2>沒做完當天的東西怎麼辦</h2>
-  <p class="lede">一定會有做不完的日子，這很正常。重點是<b>怎麼收</b>——收錯了整張表就會垮。</p>
   <ul class="rules">
     <li data-n="01"><b>不補、不加量。</b>今天沒做完就算了，明天照原本的做。</li>
     <li data-n="02">真的要補，<b>只補錯題</b>。沒寫完的新題目直接丟掉，錯題一定要補。</li>
@@ -532,33 +312,25 @@
     <li data-n="04">「今天沒做完 → 明天做雙倍」<b>絕對不准</b>。那是放棄的起點，不是補救。</li>
     <li data-n="05"><b>連續三天做不完 → 傳訊息叫我砍量。</b>那是表排錯了，不是你不行。</li>
   </ul>
-
 </section>
-
 <section>
   <span class="num">06</span>
-  
   <h2>五條鐵則</h2>
   <ul class="rules">
-    <li data-n="01">學校教到哪就複習到哪。<b>不要超前，也不要積在週末補</b>——積起來就會放棄。</li>
+    <li data-n="01">學校教到哪就複習到哪。<b>不要超前，也不要積在週末補</b>。</li>
     <li data-n="02">看書不算讀書，<b>寫得出來才算</b>。每一格結束前一定要動筆。</li>
     <li data-n="03">今天真的做不到就<b>只做第一格</b>。做一格 &gt; 全部跳過。</li>
     <li data-n="04">補習班上完的當天晚上一定要<b>趁還記得整理一次</b>，隔一天就少一半。</li>
-    <li data-n="05">2 小時不是連續坐 2 小時。<b>表上的休息時段要真的休息</b>，不然後面一小時等於白坐。</li>
+    <li data-n="05">2 小時不是連續坐 2 小時。<b>表上的休息時段要真的休息</b>，不然後面等於白坐。</li>
   </ul>
-
 </section>
 
-<footer>
-  <span>範圍依你拍的目次整理 · 數學章名開學確認後可調 · 課表有變跟我說我改</span>
-  <span class="sig">VERO</span>
-</footer>
+<footer><span>9/14 重新排的表，舊表(8/31–10/13)打勾進度作廢 · 課表有變跟我說我改</span><span class="sig">VERO</span></footer>
 </div>
 
 <script>
-var DAYS = [{"iso": "2026-08-31", "label": "8/31（一）", "wd": "一", "week": 1, "meta": "2 小時 · 打球，6:00 到家", "school": "① 數學　④⑧ 國文　⑦ 探索東亞", "hol": "", "exam": false, "min": 110, "rows": [{"brk": false, "a": "18:50", "b": "19:30", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "今天的功課先寫完，有繳交壓力排最前面", "s": ""}, {"brk": false, "a": "19:30", "b": "19:52", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-li", "n": "理化補習作業", "t": "週日北車理化補習的作業，先清一段（1/2）", "s": "另一段排在週三"}, {"brk": true, "a": "19:52", "b": "20:12", "t": "吉他練習 20 分 · 中場休息，換個腦子"}, {"brk": false, "a": "20:12", "b": "20:30", "m": 18, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "第①節 —— 第 1 章 前半，做 5 題", "s": "錯的打星號，星號題之後要重寫"}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 這就是你的中場休息"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "今天④⑧兩節國文 —— 第一課 田園之秋選 課文＋注釋", "s": "注釋遮起來自己想"}, {"brk": false, "a": "21:15", "b": "21:30", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "上週的錯題重寫", "s": "不准看答案"}]}, {"iso": "2026-09-01", "label": "9/1（二）", "wd": "二", "week": 1, "meta": "30 分 · 6:30–8:00 台北上課", "school": "① 理化　④ 國文　⑥ 數學　⑦⑧ 英文", "hol": "", "exam": false, "min": 48, "rows": [{"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:40", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "補習剛回來、時間最緊的一天，先把功課寫完", "s": ""}, {"brk": false, "a": "21:40", "b": "21:48", "m": 8, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "第 1 章 前半，課本掃一眼就好", "s": "今天真的只剩這一格，不硬塞"}]}, {"iso": "2026-09-02", "label": "9/2（三）", "wd": "三", "week": 1, "meta": "1 小時 · 8:00–8:50 吉他", "school": "① 英文　② 數學　④⑧ 理化　⑤ 國文", "hol": "", "exam": false, "min": 104, "rows": [{"brk": false, "a": "18:30", "b": "19:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "上課前先寫完，寫不完也要停下來去上課", "s": ""}, {"brk": false, "a": "19:10", "b": "19:32", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-shu", "n": "數學補習作業", "t": "週二台北數學補習的作業，先清一段（1/2）", "s": "另一段排在週四"}, {"brk": false, "a": "19:32", "b": "19:54", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-li", "n": "理化補習作業", "t": "週日北車理化補習的作業，清第二段（2/2）", "s": ""}, {"brk": true, "a": "20:00", "b": "20:50", "t": "吉他課"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第⑤節 —— 第一課 田園之秋選 課文唸一遍", "s": ""}, {"brk": false, "a": "21:15", "b": "21:20", "m": 5, "kind": "預習", "kc": "k-pre", "sc": "s-ying", "n": "英文", "t": "明天④節英文 —— L1 單字，掃一眼", "s": ""}]}, {"iso": "2026-09-03", "label": "9/3（四）", "wd": "四", "week": 1, "meta": "2 小時 · 打球，6:00 到家", "school": "① 理化　②⑧ 數學　③ 國文　④ 英文　⑦ 公民", "hol": "", "exam": false, "min": 120, "rows": [{"brk": false, "a": "18:50", "b": "19:30", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "今天的功課先寫完", "s": ""}, {"brk": false, "a": "19:30", "b": "19:52", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-shu", "n": "數學補習作業", "t": "週二台北數學補習的作業，清第二段（2/2）", "s": ""}, {"brk": true, "a": "19:52", "b": "20:02", "t": "休息 10 分"}, {"brk": false, "a": "20:02", "b": "20:17", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "第①節 —— 第 1 章 測量與估計，重點＋算 2 題", "s": ""}, {"brk": false, "a": "20:17", "b": "20:30", "m": 13, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "公民", "t": "第⑦節 —— 公民 1 章 國家與民主政治，寫 4 題", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 這就是你的中場休息"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "這週的計算題再算一次", "s": "只算，不看解答"}, {"brk": false, "a": "21:15", "b": "21:25", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "第④節 —— L1 單字", "s": ""}, {"brk": false, "a": "21:25", "b": "21:30", "m": 5, "kind": "預習", "kc": "k-pre", "sc": "s-she", "n": "歷史·地理", "t": "明天②歷史、⑦地理，掃一遍", "s": ""}]}, {"iso": "2026-09-04", "label": "9/4（五）", "wd": "五", "week": 1, "meta": "2 小時 · 本週總結日（學校今天沒數理英）", "school": "② 歷史　③⑤ 國文　⑦ 地理", "hol": "", "exam": false, "min": 110, "rows": [{"brk": false, "a": "18:30", "b": "19:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "今天回家最早，先把功課寫完", "s": ""}, {"brk": false, "a": "19:10", "b": "19:30", "m": 20, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "第 1 章 前半，這週錯題挑出來重算", "s": ""}, {"brk": true, "a": "19:30", "b": "19:50", "t": "吉他練習 20 分 · 中場休息"}, {"brk": false, "a": "19:50", "b": "20:05", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "第 1 章 測量與估計，講義寫一回", "s": ""}, {"brk": false, "a": "20:05", "b": "20:20", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "歷史·地理", "t": "第②⑦節 —— 歷史 1 章 商周至隋唐／地理 1 章 中國的地形，各寫 3 題", "s": ""}, {"brk": false, "a": "20:20", "b": "20:30", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第③節 —— 第一課 田園之秋選", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間"}, {"brk": false, "a": "21:00", "b": "21:10", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1 單字，單字默寫 10 個", "s": ""}]}, {"iso": "2026-09-05", "label": "9/5（六）", "wd": "六", "week": 1, "meta": "2 小時 · 上午做完，下午整天自由", "school": "—", "hol": "", "exam": false, "min": 180, "rows": [{"brk": false, "a": "09:30", "b": "10:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "週末作業也算，先寫完再讀書", "s": ""}, {"brk": false, "a": "10:10", "b": "10:40", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "這週＋上週的錯題全部重寫", "s": "還是錯的圈起來，那就是段考會考的"}, {"brk": false, "a": "10:40", "b": "11:10", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "第 1 章 測量與估計，兩章交叉的題目寫一回", "s": "密度＋濃度混在一起的最會考"}, {"brk": true, "a": "11:10", "b": "11:20", "t": "休息 10 分"}, {"brk": false, "a": "11:20", "b": "11:45", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第一課 田園之秋選，重點句默寫＋注釋自我測驗", "s": ""}, {"brk": false, "a": "11:45", "b": "12:00", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-she", "n": "社會", "t": "歷史時間軸／地理地形圖／公民關鍵字，各整理一頁", "s": ""}, {"brk": false, "a": "12:00", "b": "12:10", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1 單字，文法一回", "s": ""}, {"brk": false, "a": "12:10", "b": "12:30", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1 單字，加強一次 —— 週二被壓縮，這裡補回來", "s": "單字＋文法挑弱的做；英文補習作業另外找空檔做"}, {"brk": false, "a": "12:30", "b": "12:40", "m": 10, "kind": "預習", "kc": "k-pre", "sc": "s-mix", "n": "下週", "t": "下週一①數學、④國文，先掃過標題", "s": "每天都要有這格"}]}, {"iso": "2026-09-06", "label": "9/6（日）", "wd": "日", "week": 1, "meta": "45 分 · 整天補習，晚上只消化今天上的", "school": "補習：9:00–11:30 理化 · 13:30–16:30 英文（北車）", "hol": "", "exam": false, "min": 60, "rows": [{"brk": false, "a": "19:30", "b": "20:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "補習一整天回來，先把功課寫完", "s": ""}, {"brk": false, "a": "20:10", "b": "20:20", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "早上補習班上的，整理重點＋標不懂的", "s": "不懂的圈起來，週一問老師"}, {"brk": false, "a": "20:20", "b": "20:30", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "下午北車那堂的單字快速過一遍", "s": "出聲唸，最快"}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 今天讀完了，放心滑"}]}, {"iso": "2026-09-07", "label": "9/7（一）", "wd": "一", "week": 2, "meta": "2 小時 · 打球，6:00 到家", "school": "① 數學　④⑧ 國文　⑦ 探索東亞", "hol": "", "exam": false, "min": 110, "rows": [{"brk": false, "a": "18:50", "b": "19:30", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "今天的功課先寫完，有繳交壓力排最前面", "s": ""}, {"brk": false, "a": "19:30", "b": "19:52", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-li", "n": "理化補習作業", "t": "週日北車理化補習的作業，先清一段（1/2）", "s": "另一段排在週三"}, {"brk": true, "a": "19:52", "b": "20:12", "t": "吉他練習 20 分 · 中場休息，換個腦子"}, {"brk": false, "a": "20:12", "b": "20:30", "m": 18, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "第①節 —— 第 1 章 後半，做 5 題", "s": "錯的打星號，星號題之後要重寫"}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 這就是你的中場休息"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "今天④⑧兩節國文 —— 第一課收尾 → 第二課 古詩選 課文＋注釋", "s": "注釋遮起來自己想"}, {"brk": false, "a": "21:15", "b": "21:30", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "上週的錯題重寫", "s": "不准看答案"}]}, {"iso": "2026-09-08", "label": "9/8（二）", "wd": "二", "week": 2, "meta": "30 分 · 6:30–8:00 台北上課", "school": "① 理化　④ 國文　⑥ 數學　⑦⑧ 英文", "hol": "", "exam": false, "min": 48, "rows": [{"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:40", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "補習剛回來、時間最緊的一天，先把功課寫完", "s": ""}, {"brk": false, "a": "21:40", "b": "21:48", "m": 8, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "第 1 章 後半，課本掃一眼就好", "s": "今天真的只剩這一格，不硬塞"}]}, {"iso": "2026-09-09", "label": "9/9（三）", "wd": "三", "week": 2, "meta": "1 小時 · 8:00–8:50 吉他", "school": "① 英文　② 數學　④⑧ 理化　⑤ 國文", "hol": "", "exam": false, "min": 104, "rows": [{"brk": false, "a": "18:30", "b": "19:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "上課前先寫完，寫不完也要停下來去上課", "s": ""}, {"brk": false, "a": "19:10", "b": "19:32", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-shu", "n": "數學補習作業", "t": "週二台北數學補習的作業，先清一段（1/2）", "s": "另一段排在週四"}, {"brk": false, "a": "19:32", "b": "19:54", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-li", "n": "理化補習作業", "t": "週日北車理化補習的作業，清第二段（2/2）", "s": ""}, {"brk": true, "a": "20:00", "b": "20:50", "t": "吉他課"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第⑤節 —— 第一課收尾 → 第二課 古詩選 課文唸一遍", "s": ""}, {"brk": false, "a": "21:15", "b": "21:20", "m": 5, "kind": "預習", "kc": "k-pre", "sc": "s-ying", "n": "英文", "t": "明天④節英文 —— L1 課文，掃一眼", "s": ""}]}, {"iso": "2026-09-10", "label": "9/10（四）", "wd": "四", "week": 2, "meta": "2 小時 · 打球，6:00 到家", "school": "① 理化　②⑧ 數學　③ 國文　④ 英文　⑦ 公民", "hol": "", "exam": false, "min": 120, "rows": [{"brk": false, "a": "18:50", "b": "19:30", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "今天的功課先寫完", "s": ""}, {"brk": false, "a": "19:30", "b": "19:52", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-shu", "n": "數學補習作業", "t": "週二台北數學補習的作業，清第二段（2/2）", "s": ""}, {"brk": true, "a": "19:52", "b": "20:02", "t": "休息 10 分"}, {"brk": false, "a": "20:02", "b": "20:17", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "第①節 —— 第 1 章 體積與密度，重點＋算 2 題", "s": ""}, {"brk": false, "a": "20:17", "b": "20:30", "m": 13, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "公民", "t": "第⑦節 —— 公民 1 章，寫 4 題", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 這就是你的中場休息"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "這週的計算題再算一次", "s": "只算，不看解答"}, {"brk": false, "a": "21:15", "b": "21:25", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "第④節 —— L1 課文", "s": ""}, {"brk": false, "a": "21:25", "b": "21:30", "m": 5, "kind": "預習", "kc": "k-pre", "sc": "s-she", "n": "歷史·地理", "t": "明天②歷史、⑦地理，掃一遍", "s": ""}]}, {"iso": "2026-09-11", "label": "9/11（五）", "wd": "五", "week": 2, "meta": "2 小時 · 本週總結日（學校今天沒數理英）", "school": "② 歷史　③⑤ 國文　⑦ 地理", "hol": "", "exam": false, "min": 110, "rows": [{"brk": false, "a": "18:30", "b": "19:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "今天回家最早，先把功課寫完", "s": ""}, {"brk": false, "a": "19:10", "b": "19:30", "m": 20, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "第 1 章 後半，這週錯題挑出來重算", "s": ""}, {"brk": true, "a": "19:30", "b": "19:50", "t": "吉他練習 20 分 · 中場休息"}, {"brk": false, "a": "19:50", "b": "20:05", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "第 1 章 體積與密度，講義寫一回", "s": ""}, {"brk": false, "a": "20:05", "b": "20:20", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "歷史·地理", "t": "第②⑦節 —— 歷史 1 章／地理 1 章 中國的地形，各寫 3 題", "s": ""}, {"brk": false, "a": "20:20", "b": "20:30", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第③節 —— 第一課收尾 → 第二課 古詩選", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間"}, {"brk": false, "a": "21:00", "b": "21:10", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1 課文，單字默寫 10 個", "s": ""}]}, {"iso": "2026-09-12", "label": "9/12（六）", "wd": "六", "week": 2, "meta": "2 小時 · 上午做完，下午整天自由", "school": "—", "hol": "", "exam": false, "min": 180, "rows": [{"brk": false, "a": "09:30", "b": "10:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "週末作業也算，先寫完再讀書", "s": ""}, {"brk": false, "a": "10:10", "b": "10:40", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "這週＋上週的錯題全部重寫", "s": "還是錯的圈起來，那就是段考會考的"}, {"brk": false, "a": "10:40", "b": "11:10", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "第 1 章 體積與密度，兩章交叉的題目寫一回", "s": "密度＋濃度混在一起的最會考"}, {"brk": true, "a": "11:10", "b": "11:20", "t": "休息 10 分"}, {"brk": false, "a": "11:20", "b": "11:45", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第一課收尾 → 第二課 古詩選，重點句默寫＋注釋自我測驗", "s": ""}, {"brk": false, "a": "11:45", "b": "12:00", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-she", "n": "社會", "t": "歷史時間軸／地理地形圖／公民關鍵字，各整理一頁", "s": ""}, {"brk": false, "a": "12:00", "b": "12:10", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1 課文，文法一回", "s": ""}, {"brk": false, "a": "12:10", "b": "12:30", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1 課文，加強一次 —— 週二被壓縮，這裡補回來", "s": "單字＋文法挑弱的做；英文補習作業另外找空檔做"}, {"brk": false, "a": "12:30", "b": "12:40", "m": 10, "kind": "預習", "kc": "k-pre", "sc": "s-mix", "n": "下週", "t": "下週一①數學、④國文，先掃過標題", "s": "每天都要有這格"}]}, {"iso": "2026-09-13", "label": "9/13（日）", "wd": "日", "week": 2, "meta": "45 分 · 整天補習，晚上只消化今天上的", "school": "補習：9:00–11:30 理化 · 13:30–16:30 英文（北車）", "hol": "", "exam": false, "min": 60, "rows": [{"brk": false, "a": "19:30", "b": "20:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "補習一整天回來，先把功課寫完", "s": ""}, {"brk": false, "a": "20:10", "b": "20:20", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "早上補習班上的，整理重點＋標不懂的", "s": "不懂的圈起來，週一問老師"}, {"brk": false, "a": "20:20", "b": "20:30", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "下午北車那堂的單字快速過一遍", "s": "出聲唸，最快"}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 今天讀完了，放心滑"}]}, {"iso": "2026-09-14", "label": "9/14（一）", "wd": "一", "week": 3, "meta": "2 小時 · 打球，6:00 到家", "school": "① 數學　④⑧ 國文　⑦ 探索東亞", "hol": "", "exam": false, "min": 110, "rows": [{"brk": false, "a": "18:50", "b": "19:30", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "今天的功課先寫完，有繳交壓力排最前面", "s": ""}, {"brk": false, "a": "19:30", "b": "19:52", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-li", "n": "理化補習作業", "t": "週日北車理化補習的作業，先清一段（1/2）", "s": "另一段排在週三"}, {"brk": true, "a": "19:52", "b": "20:12", "t": "吉他練習 20 分 · 中場休息，換個腦子"}, {"brk": false, "a": "20:12", "b": "20:30", "m": 18, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "第①節 —— 第 2 章 前半，做 5 題", "s": "錯的打星號，星號題之後要重寫"}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 這就是你的中場休息"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "今天④⑧兩節國文 —— 第二課 古詩選 課文＋注釋", "s": "注釋遮起來自己想"}, {"brk": false, "a": "21:15", "b": "21:30", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "上週的錯題重寫", "s": "不准看答案"}]}, {"iso": "2026-09-15", "label": "9/15（二）", "wd": "二", "week": 3, "meta": "30 分 · 6:30–8:00 台北上課", "school": "① 理化　④ 國文　⑥ 數學　⑦⑧ 英文", "hol": "", "exam": false, "min": 48, "rows": [{"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:40", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "補習剛回來、時間最緊的一天，先把功課寫完", "s": ""}, {"brk": false, "a": "21:40", "b": "21:48", "m": 8, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "第 2 章 前半，課本掃一眼就好", "s": "今天真的只剩這一格，不硬塞"}]}, {"iso": "2026-09-16", "label": "9/16（三）", "wd": "三", "week": 3, "meta": "1 小時 · 8:00–8:50 吉他", "school": "① 英文　② 數學　④⑧ 理化　⑤ 國文", "hol": "", "exam": false, "min": 104, "rows": [{"brk": false, "a": "18:30", "b": "19:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "上課前先寫完，寫不完也要停下來去上課", "s": ""}, {"brk": false, "a": "19:10", "b": "19:32", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-shu", "n": "數學補習作業", "t": "週二台北數學補習的作業，先清一段（1/2）", "s": "另一段排在週四"}, {"brk": false, "a": "19:32", "b": "19:54", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-li", "n": "理化補習作業", "t": "週日北車理化補習的作業，清第二段（2/2）", "s": ""}, {"brk": true, "a": "20:00", "b": "20:50", "t": "吉他課"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第⑤節 —— 第二課 古詩選 課文唸一遍", "s": ""}, {"brk": false, "a": "21:15", "b": "21:20", "m": 5, "kind": "預習", "kc": "k-pre", "sc": "s-ying", "n": "英文", "t": "明天④節英文 —— L2 單字，掃一眼", "s": ""}]}, {"iso": "2026-09-17", "label": "9/17（四）", "wd": "四", "week": 3, "meta": "2 小時 · 打球，6:00 到家", "school": "① 理化　②⑧ 數學　③ 國文　④ 英文　⑦ 公民", "hol": "", "exam": false, "min": 120, "rows": [{"brk": false, "a": "18:50", "b": "19:30", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "今天的功課先寫完", "s": ""}, {"brk": false, "a": "19:30", "b": "19:52", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-shu", "n": "數學補習作業", "t": "週二台北數學補習的作業，清第二段（2/2）", "s": ""}, {"brk": true, "a": "19:52", "b": "20:02", "t": "休息 10 分"}, {"brk": false, "a": "20:02", "b": "20:17", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "第①節 —— 第 2 章 認識物質，重點＋算 2 題", "s": ""}, {"brk": false, "a": "20:17", "b": "20:30", "m": 13, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "公民", "t": "第⑦節 —— 公民 1 章收尾，寫 4 題", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 這就是你的中場休息"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "這週的計算題再算一次", "s": "只算，不看解答"}, {"brk": false, "a": "21:15", "b": "21:25", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "第④節 —— L2 單字", "s": ""}, {"brk": false, "a": "21:25", "b": "21:30", "m": 5, "kind": "預習", "kc": "k-pre", "sc": "s-she", "n": "歷史·地理", "t": "明天②歷史、⑦地理，掃一遍", "s": ""}]}, {"iso": "2026-09-18", "label": "9/18（五）", "wd": "五", "week": 3, "meta": "2 小時 · 本週總結日（學校今天沒數理英）", "school": "② 歷史　③⑤ 國文　⑦ 地理", "hol": "", "exam": false, "min": 110, "rows": [{"brk": false, "a": "18:30", "b": "19:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "今天回家最早，先把功課寫完", "s": ""}, {"brk": false, "a": "19:10", "b": "19:30", "m": 20, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "第 2 章 前半，這週錯題挑出來重算", "s": ""}, {"brk": true, "a": "19:30", "b": "19:50", "t": "吉他練習 20 分 · 中場休息"}, {"brk": false, "a": "19:50", "b": "20:05", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "第 2 章 認識物質，講義寫一回", "s": ""}, {"brk": false, "a": "20:05", "b": "20:20", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "歷史·地理", "t": "第②⑦節 —— 歷史 2 章 民族與文化／地理 1 章收尾，各寫 3 題", "s": ""}, {"brk": false, "a": "20:20", "b": "20:30", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第③節 —— 第二課 古詩選", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間"}, {"brk": false, "a": "21:00", "b": "21:10", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L2 單字，單字默寫 10 個", "s": ""}]}, {"iso": "2026-09-19", "label": "9/19（六）", "wd": "六", "week": 3, "meta": "2 小時 · 上午做完，下午整天自由", "school": "—", "hol": "", "exam": false, "min": 180, "rows": [{"brk": false, "a": "09:30", "b": "10:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "週末作業也算，先寫完再讀書", "s": ""}, {"brk": false, "a": "10:10", "b": "10:40", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "這週＋上週的錯題全部重寫", "s": "還是錯的圈起來，那就是段考會考的"}, {"brk": false, "a": "10:40", "b": "11:10", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "第 2 章 認識物質，兩章交叉的題目寫一回", "s": "密度＋濃度混在一起的最會考"}, {"brk": true, "a": "11:10", "b": "11:20", "t": "休息 10 分"}, {"brk": false, "a": "11:20", "b": "11:45", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第二課 古詩選，重點句默寫＋注釋自我測驗", "s": ""}, {"brk": false, "a": "11:45", "b": "12:00", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-she", "n": "社會", "t": "歷史時間軸／地理地形圖／公民關鍵字，各整理一頁", "s": ""}, {"brk": false, "a": "12:00", "b": "12:10", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L2 單字，文法一回", "s": ""}, {"brk": false, "a": "12:10", "b": "12:30", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L2 單字，加強一次 —— 週二被壓縮，這裡補回來", "s": "單字＋文法挑弱的做；英文補習作業另外找空檔做"}, {"brk": false, "a": "12:30", "b": "12:40", "m": 10, "kind": "預習", "kc": "k-pre", "sc": "s-mix", "n": "下週", "t": "下週一①數學、④國文，先掃過標題", "s": "每天都要有這格"}]}, {"iso": "2026-09-20", "label": "9/20（日）", "wd": "日", "week": 3, "meta": "45 分 · 整天補習，晚上只消化今天上的", "school": "補習：9:00–11:30 理化 · 13:30–16:30 英文（北車）", "hol": "", "exam": false, "min": 60, "rows": [{"brk": false, "a": "19:30", "b": "20:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "補習一整天回來，先把功課寫完", "s": ""}, {"brk": false, "a": "20:10", "b": "20:20", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "早上補習班上的，整理重點＋標不懂的", "s": "不懂的圈起來，週一問老師"}, {"brk": false, "a": "20:20", "b": "20:30", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "下午北車那堂的單字快速過一遍", "s": "出聲唸，最快"}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 今天讀完了，放心滑"}]}, {"iso": "2026-09-21", "label": "9/21（一）", "wd": "一", "week": 4, "meta": "2 小時 · 打球，6:00 到家", "school": "① 數學　④⑧ 國文　⑦ 探索東亞", "hol": "", "exam": false, "min": 110, "rows": [{"brk": false, "a": "18:50", "b": "19:30", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "今天的功課先寫完，有繳交壓力排最前面", "s": ""}, {"brk": false, "a": "19:30", "b": "19:52", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-li", "n": "理化補習作業", "t": "週日北車理化補習的作業，先清一段（1/2）", "s": "另一段排在週三"}, {"brk": true, "a": "19:52", "b": "20:12", "t": "吉他練習 20 分 · 中場休息，換個腦子"}, {"brk": false, "a": "20:12", "b": "20:30", "m": 18, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "第①節 —— 第 2 章 畢氏定理，做 5 題", "s": "錯的打星號，星號題之後要重寫"}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 這就是你的中場休息"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "今天④⑧兩節國文 —— 第三課 下雨天，真好 課文＋注釋", "s": "注釋遮起來自己想"}, {"brk": false, "a": "21:15", "b": "21:30", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "上週的錯題重寫", "s": "不准看答案"}]}, {"iso": "2026-09-22", "label": "9/22（二）", "wd": "二", "week": 4, "meta": "30 分 · 6:30–8:00 台北上課", "school": "① 理化　④ 國文　⑥ 數學　⑦⑧ 英文", "hol": "", "exam": false, "min": 48, "rows": [{"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:40", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "補習剛回來、時間最緊的一天，先把功課寫完", "s": ""}, {"brk": false, "a": "21:40", "b": "21:48", "m": 8, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "第 2 章 畢氏定理，課本掃一眼就好", "s": "今天真的只剩這一格，不硬塞"}]}, {"iso": "2026-09-23", "label": "9/23（三）", "wd": "三", "week": 4, "meta": "1 小時 · 8:00–8:50 吉他", "school": "① 英文　② 數學　④⑧ 理化　⑤ 國文", "hol": "", "exam": false, "min": 104, "rows": [{"brk": false, "a": "18:30", "b": "19:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "上課前先寫完，寫不完也要停下來去上課", "s": ""}, {"brk": false, "a": "19:10", "b": "19:32", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-shu", "n": "數學補習作業", "t": "週二台北數學補習的作業，先清一段（1/2）", "s": "另一段排在週四"}, {"brk": false, "a": "19:32", "b": "19:54", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-li", "n": "理化補習作業", "t": "週日北車理化補習的作業，清第二段（2/2）", "s": ""}, {"brk": true, "a": "20:00", "b": "20:50", "t": "吉他課"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第⑤節 —— 第三課 下雨天，真好 課文唸一遍", "s": ""}, {"brk": false, "a": "21:15", "b": "21:20", "m": 5, "kind": "預習", "kc": "k-pre", "sc": "s-ying", "n": "英文", "t": "明天④節英文 —— L2 課文，掃一眼", "s": ""}]}, {"iso": "2026-09-24", "label": "9/24（四）", "wd": "四", "week": 4, "meta": "2 小時 · 打球，6:00 到家", "school": "① 理化　②⑧ 數學　③ 國文　④ 英文　⑦ 公民", "hol": "", "exam": false, "min": 120, "rows": [{"brk": false, "a": "18:50", "b": "19:30", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "今天的功課先寫完", "s": ""}, {"brk": false, "a": "19:30", "b": "19:52", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-shu", "n": "數學補習作業", "t": "週二台北數學補習的作業，清第二段（2/2）", "s": ""}, {"brk": true, "a": "19:52", "b": "20:02", "t": "休息 10 分"}, {"brk": false, "a": "20:02", "b": "20:17", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "第①節 —— 第 2 章 溶液濃度，重點＋算 2 題", "s": ""}, {"brk": false, "a": "20:17", "b": "20:30", "m": 13, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "公民", "t": "第⑦節 —— 公民 2 章 憲法與權利保障，寫 4 題", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 這就是你的中場休息"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "這週的計算題再算一次", "s": "只算，不看解答"}, {"brk": false, "a": "21:15", "b": "21:25", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "第④節 —— L2 課文", "s": ""}, {"brk": false, "a": "21:25", "b": "21:30", "m": 5, "kind": "預習", "kc": "k-pre", "sc": "s-she", "n": "歷史·地理", "t": "明天②歷史、⑦地理，掃一遍", "s": ""}]}, {"iso": "2026-09-25", "label": "9/25（五）", "wd": "五", "week": 4, "meta": "2 小時 · 沒學校，白天做完，下午晚上整天自由", "school": "", "hol": "中秋節", "exam": false, "min": 145, "rows": [{"brk": false, "a": "09:30", "b": "10:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "放假也一樣，先寫完功課再讀書", "s": ""}, {"brk": true, "a": "10:10", "b": "10:30", "t": "吉他練習 20 分 · 中場休息"}, {"brk": false, "a": "10:30", "b": "11:00", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "第 2 章 畢氏定理，這週錯題＋整章題目", "s": "放假日的上午最清醒，別拖到晚上"}, {"brk": true, "a": "11:00", "b": "11:10", "t": "休息 10 分"}, {"brk": false, "a": "11:10", "b": "11:35", "m": 25, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "第 2 章 溶液濃度，講義寫一回", "s": ""}, {"brk": false, "a": "11:35", "b": "12:00", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第三課 下雨天，真好，課文＋注釋自我測驗", "s": ""}, {"brk": false, "a": "12:00", "b": "12:15", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-she", "n": "社會", "t": "歷史／地理／公民，各寫 5 題", "s": ""}, {"brk": false, "a": "12:15", "b": "12:25", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L2 課文，單字＋文法", "s": ""}]}, {"iso": "2026-09-26", "label": "9/26（六）", "wd": "六", "week": 4, "meta": "2 小時 · 上午做完，下午整天自由", "school": "—", "hol": "", "exam": false, "min": 180, "rows": [{"brk": false, "a": "09:30", "b": "10:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "週末作業也算，先寫完再讀書", "s": ""}, {"brk": false, "a": "10:10", "b": "10:40", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "這週＋上週的錯題全部重寫", "s": "還是錯的圈起來，那就是段考會考的"}, {"brk": false, "a": "10:40", "b": "11:10", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "第 2 章 溶液濃度，兩章交叉的題目寫一回", "s": "密度＋濃度混在一起的最會考"}, {"brk": true, "a": "11:10", "b": "11:20", "t": "休息 10 分"}, {"brk": false, "a": "11:20", "b": "11:45", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第三課 下雨天，真好，重點句默寫＋注釋自我測驗", "s": ""}, {"brk": false, "a": "11:45", "b": "12:00", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-she", "n": "社會", "t": "歷史時間軸／地理地形圖／公民關鍵字，各整理一頁", "s": ""}, {"brk": false, "a": "12:00", "b": "12:10", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L2 課文，文法一回", "s": ""}, {"brk": false, "a": "12:10", "b": "12:30", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L2 課文，加強一次 —— 週二被壓縮，這裡補回來", "s": "單字＋文法挑弱的做；英文補習作業另外找空檔做"}, {"brk": false, "a": "12:30", "b": "12:40", "m": 10, "kind": "預習", "kc": "k-pre", "sc": "s-mix", "n": "下週", "t": "下週一①數學、④國文，先掃過標題", "s": "每天都要有這格"}]}, {"iso": "2026-09-27", "label": "9/27（日）", "wd": "日", "week": 4, "meta": "45 分 · 整天補習，晚上只消化今天上的", "school": "補習：9:00–11:30 理化 · 13:30–16:30 英文（北車）", "hol": "", "exam": false, "min": 60, "rows": [{"brk": false, "a": "19:30", "b": "20:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "補習一整天回來，先把功課寫完", "s": ""}, {"brk": false, "a": "20:10", "b": "20:20", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "早上補習班上的，整理重點＋標不懂的", "s": "不懂的圈起來，週一問老師"}, {"brk": false, "a": "20:20", "b": "20:30", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "下午北車那堂的單字快速過一遍", "s": "出聲唸，最快"}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 今天讀完了，放心滑"}]}, {"iso": "2026-09-28", "label": "9/28（一）", "wd": "一", "week": 5, "meta": "2 小時 · 沒學校，白天做完，下午晚上整天自由", "school": "", "hol": "教師節", "exam": false, "min": 160, "rows": [{"brk": false, "a": "09:30", "b": "10:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "放假也一樣，先寫完功課再讀書", "s": ""}, {"brk": false, "a": "10:10", "b": "10:32", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-li", "n": "理化補習作業", "t": "週日北車理化補習的作業，先清一段（1/2）", "s": "另一段排在週三"}, {"brk": true, "a": "10:32", "b": "10:52", "t": "吉他練習 20 分 · 中場休息"}, {"brk": false, "a": "10:52", "b": "11:22", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "第 1+2 章 整章題目，這週錯題＋整章題目", "s": "放假日的上午最清醒，別拖到晚上"}, {"brk": true, "a": "11:22", "b": "11:32", "t": "休息 10 分"}, {"brk": false, "a": "11:32", "b": "11:55", "m": 23, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "第 2 章 混合物分離＋計算，講義寫一回", "s": ""}, {"brk": false, "a": "11:55", "b": "12:15", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "語文常識㈠ 詞類，課文＋注釋自我測驗", "s": ""}, {"brk": false, "a": "12:15", "b": "12:30", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-she", "n": "社會", "t": "歷史／地理／公民，各寫 4 題", "s": ""}, {"brk": false, "a": "12:30", "b": "12:40", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1+L2 文法，單字＋文法", "s": ""}]}, {"iso": "2026-09-29", "label": "9/29（二）", "wd": "二", "week": 5, "meta": "30 分 · 6:30–8:00 台北上課", "school": "① 理化　④ 國文　⑥ 數學　⑦⑧ 英文", "hol": "", "exam": false, "min": 48, "rows": [{"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:40", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "補習剛回來、時間最緊的一天，先把功課寫完", "s": ""}, {"brk": false, "a": "21:40", "b": "21:48", "m": 8, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "第 1+2 章 整章題目，課本掃一眼就好", "s": "今天真的只剩這一格，不硬塞"}]}, {"iso": "2026-09-30", "label": "9/30（三）", "wd": "三", "week": 5, "meta": "1 小時 · 8:00–8:50 吉他", "school": "① 英文　② 數學　④⑧ 理化　⑤ 國文", "hol": "", "exam": false, "min": 104, "rows": [{"brk": false, "a": "18:30", "b": "19:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "上課前先寫完，寫不完也要停下來去上課", "s": ""}, {"brk": false, "a": "19:10", "b": "19:32", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-shu", "n": "數學補習作業", "t": "週二台北數學補習的作業，先清一段（1/2）", "s": "另一段排在週四"}, {"brk": false, "a": "19:32", "b": "19:54", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-li", "n": "理化補習作業", "t": "週日北車理化補習的作業，清第二段（2/2）", "s": ""}, {"brk": true, "a": "20:00", "b": "20:50", "t": "吉他課"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第⑤節 —— 語文常識㈠ 詞類 課文唸一遍", "s": ""}, {"brk": false, "a": "21:15", "b": "21:20", "m": 5, "kind": "預習", "kc": "k-pre", "sc": "s-ying", "n": "英文", "t": "明天④節英文 —— L1+L2 文法，掃一眼", "s": ""}]}, {"iso": "2026-10-01", "label": "10/1（四）", "wd": "四", "week": 5, "meta": "2 小時 · 打球，6:00 到家", "school": "① 理化　②⑧ 數學　③ 國文　④ 英文　⑦ 公民", "hol": "", "exam": false, "min": 120, "rows": [{"brk": false, "a": "18:50", "b": "19:30", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "今天的功課先寫完", "s": ""}, {"brk": false, "a": "19:30", "b": "19:52", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-shu", "n": "數學補習作業", "t": "週二台北數學補習的作業，清第二段（2/2）", "s": ""}, {"brk": true, "a": "19:52", "b": "20:02", "t": "休息 10 分"}, {"brk": false, "a": "20:02", "b": "20:17", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "第①節 —— 第 2 章 混合物分離＋計算，重點＋算 2 題", "s": ""}, {"brk": false, "a": "20:17", "b": "20:30", "m": 13, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "公民", "t": "第⑦節 —— 公民 2 章收尾，寫 4 題", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 這就是你的中場休息"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "這週的計算題再算一次", "s": "只算，不看解答"}, {"brk": false, "a": "21:15", "b": "21:25", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "第④節 —— L1+L2 文法", "s": ""}, {"brk": false, "a": "21:25", "b": "21:30", "m": 5, "kind": "預習", "kc": "k-pre", "sc": "s-she", "n": "歷史·地理", "t": "明天②歷史、⑦地理，掃一遍", "s": ""}]}, {"iso": "2026-10-02", "label": "10/2（五）", "wd": "五", "week": 5, "meta": "2 小時 · 本週總結日（學校今天沒數理英）", "school": "② 歷史　③⑤ 國文　⑦ 地理", "hol": "", "exam": false, "min": 110, "rows": [{"brk": false, "a": "18:30", "b": "19:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "今天回家最早，先把功課寫完", "s": ""}, {"brk": false, "a": "19:10", "b": "19:30", "m": 20, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "第 1+2 章 整章題目，這週錯題挑出來重算", "s": ""}, {"brk": true, "a": "19:30", "b": "19:50", "t": "吉他練習 20 分 · 中場休息"}, {"brk": false, "a": "19:50", "b": "20:05", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "第 2 章 混合物分離＋計算，講義寫一回", "s": ""}, {"brk": false, "a": "20:05", "b": "20:20", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "歷史·地理", "t": "第②⑦節 —— 歷史 1+2 章收尾／地理 2 章收尾，各寫 3 題", "s": ""}, {"brk": false, "a": "20:20", "b": "20:30", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第③節 —— 語文常識㈠ 詞類", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間"}, {"brk": false, "a": "21:00", "b": "21:10", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1+L2 文法，單字默寫 10 個", "s": ""}]}, {"iso": "2026-10-03", "label": "10/3（六）", "wd": "六", "week": 5, "meta": "2 小時 · 上午做完，下午整天自由", "school": "—", "hol": "", "exam": false, "min": 180, "rows": [{"brk": false, "a": "09:30", "b": "10:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "週末作業也算，先寫完再讀書", "s": ""}, {"brk": false, "a": "10:10", "b": "10:40", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "這週＋上週的錯題全部重寫", "s": "還是錯的圈起來，那就是段考會考的"}, {"brk": false, "a": "10:40", "b": "11:10", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "第 2 章 混合物分離＋計算，兩章交叉的題目寫一回", "s": "密度＋濃度混在一起的最會考"}, {"brk": true, "a": "11:10", "b": "11:20", "t": "休息 10 分"}, {"brk": false, "a": "11:20", "b": "11:45", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "語文常識㈠ 詞類，重點句默寫＋注釋自我測驗", "s": ""}, {"brk": false, "a": "11:45", "b": "12:00", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-she", "n": "社會", "t": "歷史時間軸／地理地形圖／公民關鍵字，各整理一頁", "s": ""}, {"brk": false, "a": "12:00", "b": "12:10", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1+L2 文法，文法一回", "s": ""}, {"brk": false, "a": "12:10", "b": "12:30", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1+L2 文法，加強一次 —— 週二被壓縮，這裡補回來", "s": "單字＋文法挑弱的做；英文補習作業另外找空檔做"}, {"brk": false, "a": "12:30", "b": "12:40", "m": 10, "kind": "預習", "kc": "k-pre", "sc": "s-mix", "n": "下週", "t": "下週一①數學、④國文，先掃過標題", "s": "每天都要有這格"}]}, {"iso": "2026-10-04", "label": "10/4（日）", "wd": "日", "week": 5, "meta": "45 分 · 整天補習，晚上只消化今天上的", "school": "補習：9:00–11:30 理化 · 13:30–16:30 英文（北車）", "hol": "", "exam": false, "min": 60, "rows": [{"brk": false, "a": "19:30", "b": "20:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "補習一整天回來，先把功課寫完", "s": ""}, {"brk": false, "a": "20:10", "b": "20:20", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "早上補習班上的，整理重點＋標不懂的", "s": "不懂的圈起來，週一問老師"}, {"brk": false, "a": "20:20", "b": "20:30", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "下午北車那堂的單字快速過一遍", "s": "出聲唸，最快"}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 今天讀完了，放心滑"}]}, {"iso": "2026-10-05", "label": "10/5（一）", "wd": "一", "week": 6, "meta": "2 小時 · 打球日", "school": "① 數學　④⑧ 國文　⑦ 探索東亞", "hol": "", "exam": false, "min": 130, "rows": [{"brk": false, "a": "18:50", "b": "19:30", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "衝刺週功課照樣先寫完", "s": ""}, {"brk": false, "a": "19:30", "b": "19:52", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-li", "n": "理化補習作業", "t": "週日理化補習的作業，先清一段（1/2）", "s": "另一段排在週三"}, {"brk": false, "a": "19:52", "b": "20:17", "m": 25, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "第 1+2 章 完整考卷一份，縮時抓錯的類型", "s": "當成真的段考在寫"}, {"brk": false, "a": "20:17", "b": "20:30", "m": 13, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "錯題本第 1 章，只挑打星號的重寫", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-ying", "n": "英文", "t": "L1 全部單字默寫", "s": ""}, {"brk": false, "a": "21:15", "b": "21:30", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-she", "n": "社會", "t": "歷史 1 章 寫 15 題", "s": ""}]}, {"iso": "2026-10-06", "label": "10/6（二）", "wd": "二", "week": 6, "meta": "30 分 · 學校有理化英文，晚上有課", "school": "① 理化　④ 國文　⑥ 數學　⑦⑧ 英文", "hol": "", "exam": false, "min": 48, "rows": [{"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間"}, {"brk": false, "a": "21:00", "b": "21:40", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "衝刺週也一樣，補習剛回來先寫功課", "s": ""}, {"brk": false, "a": "21:40", "b": "21:48", "m": 8, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "錯題本挑 2 題重算", "s": "今天真的只剩這一格，不硬塞"}]}, {"iso": "2026-10-07", "label": "10/7（三）", "wd": "三", "week": 6, "meta": "1 小時 · 吉他日", "school": "① 英文　② 數學　④⑧ 理化　⑤ 國文", "hol": "", "exam": false, "min": 99, "rows": [{"brk": false, "a": "18:30", "b": "19:10", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "上課前先寫完", "s": ""}, {"brk": false, "a": "19:10", "b": "19:32", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-shu", "n": "數學補習作業", "t": "週二數學補習的作業，先清一段（1/2）", "s": "另一段排在週四"}, {"brk": false, "a": "19:32", "b": "19:54", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-li", "n": "理化補習作業", "t": "週日理化補習的作業，清第二段（2/2）", "s": ""}, {"brk": true, "a": "20:00", "b": "20:50", "t": "吉他課"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-ying", "n": "英文", "t": "L2 全部單字默寫", "s": ""}]}, {"iso": "2026-10-08", "label": "10/8（四）", "wd": "四", "week": 6, "meta": "2 小時 · 打球日", "school": "① 理化　②⑧ 數學　③ 國文　④ 英文　⑦ 公民", "hol": "", "exam": false, "min": 130, "rows": [{"brk": false, "a": "18:50", "b": "19:30", "m": 40, "kind": "作業", "kc": "k-hw", "sc": "s-mix", "n": "學校作業", "t": "衝刺週功課照樣先寫完", "s": ""}, {"brk": false, "a": "19:30", "b": "19:52", "m": 22, "kind": "作業", "kc": "k-hw", "sc": "s-shu", "n": "數學補習作業", "t": "週二數學補習的作業，清第二段（2/2）", "s": ""}, {"brk": false, "a": "19:52", "b": "20:22", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "第 1+2 章 完整考卷一份，只做選擇＋計算題，計時 30 分", "s": ""}, {"brk": false, "a": "20:22", "b": "20:30", "m": 8, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "今天考卷錯的挑 2 題重算", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間"}, {"brk": false, "a": "21:00", "b": "21:30", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-guo", "n": "國文", "t": "第一～三課 完整考卷一份", "s": ""}]}, {"iso": "2026-10-09", "label": "10/9（五）", "wd": "五", "week": 6, "meta": "2 小時 · 國慶補假，白天做完", "school": "", "hol": "國慶補假", "exam": false, "min": 120, "rows": [{"brk": false, "a": "09:30", "b": "10:20", "m": 50, "kind": "回頭撈", "kc": "k-back", "sc": "s-she", "n": "社會", "t": "歷史＋地理＋公民 三科總複習，各寫一回", "s": "社會是最好拿分的，這天別跳過"}, {"brk": true, "a": "10:20", "b": "10:30", "t": "休息 10 分"}, {"brk": false, "a": "10:30", "b": "11:00", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-ying", "n": "英文", "t": "L1+L2 課文、文法完整一回", "s": ""}, {"brk": false, "a": "11:00", "b": "11:40", "m": 40, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "畢氏定理＋乘法公式 錯最多的題型再一輪", "s": ""}]}, {"iso": "2026-10-10", "label": "10/10（六）", "wd": "六", "week": 6, "meta": "2 小時 · 國慶日，白天做完", "school": "", "hol": "國慶日", "exam": false, "min": 120, "rows": [{"brk": false, "a": "09:30", "b": "10:20", "m": 50, "kind": "回頭撈", "kc": "k-back", "sc": "s-mix", "n": "最弱兩科", "t": "挑你最沒把握的兩科，各寫一份完整考卷計時", "s": "不知道挑哪科就看錯題本哪本最厚"}, {"brk": true, "a": "10:20", "b": "10:30", "t": "休息 10 分"}, {"brk": false, "a": "10:30", "b": "11:10", "m": 40, "kind": "回頭撈", "kc": "k-back", "sc": "s-mix", "n": "其他三科", "t": "只掃錯題，不寫新題", "s": ""}, {"brk": false, "a": "11:10", "b": "11:40", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-mix", "n": "全部", "t": "把五科的小抄整理成一張 A4", "s": "考前一天只看這張"}]}, {"iso": "2026-10-11", "label": "10/11（日）", "wd": "日", "week": 6, "meta": "45 分 · 補習日，考前一天", "school": "補習：9:00–11:30 理化 · 13:30–16:30 英文（北車）", "hol": "", "exam": false, "min": 45, "rows": [{"brk": false, "a": "19:30", "b": "20:00", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-mix", "n": "全部", "t": "只看昨天整理的那張 A4 小抄", "s": "不准寫新題目，不准熬夜"}, {"brk": false, "a": "20:00", "b": "20:15", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "公式默寫一次就好", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "手機時間 · 然後 10 點前睡，這比多讀一小時有用"}]}, {"iso": "2026-10-12", "label": "10/12（一）", "wd": "一", "week": 7, "meta": "段考 第一天 · 考完不對答案，回家再說", "school": "", "hol": "", "exam": true, "min": 0, "rows": []}, {"iso": "2026-10-13", "label": "10/13（二）", "wd": "二", "week": 7, "meta": "段考 第二天 · 考完就結束了，去玩", "school": "", "hol": "", "exam": true, "min": 0, "rows": []}];
-var WEEKS = {"1": {"guo": "第一課 田園之秋選", "shu": "第 1 章 前半", "li": "第 1 章 測量與估計", "shi": "歷史 1 章 商周至隋唐", "di": "地理 1 章 中國的地形", "gong": "公民 1 章 國家與民主政治", "ying": "L1 單字"}, "2": {"guo": "第一課收尾 → 第二課 古詩選", "shu": "第 1 章 後半", "li": "第 1 章 體積與密度", "shi": "歷史 1 章", "di": "地理 1 章 中國的地形", "gong": "公民 1 章", "ying": "L1 課文"}, "3": {"guo": "第二課 古詩選", "shu": "第 2 章 前半", "li": "第 2 章 認識物質", "shi": "歷史 2 章 民族與文化", "di": "地理 1 章收尾", "gong": "公民 1 章收尾", "ying": "L2 單字"}, "4": {"guo": "第三課 下雨天，真好", "shu": "第 2 章 畢氏定理", "li": "第 2 章 溶液濃度", "shi": "歷史 2 章", "di": "地理 2 章 中國的氣候", "gong": "公民 2 章 憲法與權利保障", "ying": "L2 課文"}, "5": {"guo": "語文常識㈠ 詞類", "shu": "第 1+2 章 整章題目", "li": "第 2 章 混合物分離＋計算", "shi": "歷史 1+2 章收尾", "di": "地理 2 章收尾", "gong": "公民 2 章收尾", "ying": "L1+L2 文法"}};
-
+var DAYS = [{"iso": "2026-09-14", "wd": "一", "week": 1, "label": "9/14（一）", "school": "① 數學　④⑧ 國文　⑦ 探索東亞", "meta": "今天特別 · 只做這一格就好", "hol": "", "exam": false, "min": 30, "rows": [{"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:30", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "數學作業收尾（明天要交，還沒寫完才做）", "s": "只寫完就好，不用訂正，明天再說"}]}, {"iso": "2026-09-15", "wd": "二", "week": 1, "label": "9/15（二）", "school": "① 理化　④ 國文　⑥ 數學　⑦⑧ 英文", "meta": "有課日 · 6:30–8:00 台北上課，約 8:30 到家", "hol": "", "exam": false, "min": 45, "rows": [{"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:20", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "今天⑦⑧兩節英文 —— 單字＋課文唸一次", "s": "出聲唸，不要只用眼睛看"}, {"brk": false, "a": "21:20", "b": "21:35", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "⑥數學教的 —— 第1章，做3題", "s": "數學最弱，算錯不要慌，抄一次錯在哪"}, {"brk": false, "a": "21:35", "b": "21:45", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "①理化／④國文 —— 今天教的重點掃一次", "s": ""}]}, {"iso": "2026-09-16", "wd": "三", "week": 1, "label": "9/16（三）", "school": "① 英文　② 數學　④⑧ 理化　⑤ 國文", "meta": "有課日 · 8:00–8:50 吉他課", "hol": "", "exam": false, "min": 45, "rows": [{"brk": false, "a": "18:00", "b": "18:20", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "④⑧兩節理化 —— 第1章，整理成重點5行", "s": "用自己的話寫，不要抄課本"}, {"brk": false, "a": "18:20", "b": "18:35", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "②數學教的 —— 第1章，做3題", "s": ""}, {"brk": true, "a": "20:00", "b": "20:50", "t": "🎸 吉他課"}, {"brk": false, "a": "21:00", "b": "21:10", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "⑤國文 —— 第二課課文唸一次", "s": ""}]}, {"iso": "2026-09-17", "wd": "四", "week": 1, "label": "9/17（四）", "school": "① 理化　②⑧ 數學　③ 國文　④ 英文　⑦ 公民", "meta": "2 小時 · 打球，6:00 到家", "hol": "", "exam": false, "min": 115, "rows": [{"brk": false, "a": "18:50", "b": "19:20", "m": 30, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "②⑧兩節數學 —— 第1章，做6題", "s": "錯的打星號，星號題之後要重寫"}, {"brk": false, "a": "19:20", "b": "19:45", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "①理化 —— 第1章，重點自己講一次＋算3題", "s": ""}, {"brk": true, "a": "19:45", "b": "19:55", "t": "休息10分 · 起來走一走"}, {"brk": false, "a": "19:55", "b": "20:10", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "公民", "t": "⑦公民 —— 第1章，今天教的重點", "s": ""}, {"brk": false, "a": "20:10", "b": "20:30", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "④英文 —— 單字＋課文", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "③國文 —— 第三課課文＋形音義", "s": "今天開始上第三課"}, {"brk": false, "a": "21:15", "b": "21:25", "m": 10, "kind": "預習", "kc": "k-pre", "sc": "s-she", "n": "史地", "t": "明天②歷史、⑦地理 —— 掃一遍標題和圖", "s": "看過就好，不用懂"}]}, {"iso": "2026-09-18", "wd": "五", "week": 1, "label": "9/18（五）", "school": "② 歷史　③⑤ 國文　⑦ 地理", "meta": "2 小時 · 5:00 到家（今天沒有數學、理化、英文）", "hol": "", "exam": false, "min": 120, "rows": [{"brk": false, "a": "17:50", "b": "18:20", "m": 30, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "歷史", "t": "②歷史 —— 第1章，今天教的重點", "s": ""}, {"brk": false, "a": "18:20", "b": "18:35", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "地理", "t": "⑦地理 —— 第1章，今天教的重點", "s": ""}, {"brk": false, "a": "18:35", "b": "19:00", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "③⑤兩節國文 —— 第三課課文＋注釋", "s": ""}, {"brk": true, "a": "19:00", "b": "19:10", "t": "休息10分"}, {"brk": false, "a": "19:10", "b": "19:30", "m": 20, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "這週(9/14–9/18)錯題重寫", "s": "不准看答案"}, {"brk": false, "a": "19:30", "b": "19:45", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "這週理化計算題再算一次", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "這週英文單字總複習", "s": ""}]}, {"iso": "2026-09-19", "wd": "六", "week": 1, "label": "9/19（六）", "school": "", "meta": "自由運用 · 這週回頭撈", "hol": "", "exam": false, "min": 105, "rows": [{"brk": false, "a": "09:30", "b": "10:15", "m": 45, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "這週(9/14–9/18)教的內容，錯題全部重寫", "s": ""}, {"brk": true, "a": "10:15", "b": "10:30", "t": "休息15分"}, {"brk": false, "a": "10:30", "b": "11:00", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "這週理化重點再算一次", "s": ""}, {"brk": false, "a": "15:30", "b": "16:00", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-guo", "n": "國文", "t": "第二課生字注釋複習", "s": ""}]}, {"iso": "2026-09-20", "wd": "日", "week": 1, "label": "9/20（日）", "school": "", "meta": "有課日 · 9:00–11:30 理化／13:30–16:30 英文補習，約 5:30 到家", "hol": "", "exam": false, "min": 35, "rows": [{"brk": false, "a": "18:00", "b": "18:20", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "整理今天補習教的重點（趁還記得）", "s": ""}, {"brk": false, "a": "18:20", "b": "18:35", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "整理今天補習教的文法／單字", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}]}, {"iso": "2026-09-21", "wd": "一", "week": 2, "label": "9/21（一）", "school": "① 數學　④⑧ 國文　⑦ 探索東亞", "meta": "2 小時 · 打球，6:00 到家", "hol": "", "exam": false, "min": 105, "rows": [{"brk": false, "a": "18:50", "b": "19:20", "m": 30, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "①數學 —— 第1章，例題重寫一次", "s": ""}, {"brk": false, "a": "19:20", "b": "19:45", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "④⑧兩節國文 —— 第三課課文＋注釋", "s": ""}, {"brk": true, "a": "19:45", "b": "19:55", "t": "休息10分"}, {"brk": false, "a": "19:55", "b": "20:10", "m": 15, "kind": "預習", "kc": "k-pre", "sc": "s-li", "n": "理化", "t": "明天①理化 —— 掃標題和圖", "s": ""}, {"brk": false, "a": "20:10", "b": "20:30", "m": 20, "kind": "預習", "kc": "k-pre", "sc": "s-ying", "n": "英文", "t": "明天⑦⑧英文 —— 先看一下課文", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第三課形音義複習", "s": ""}]}, {"iso": "2026-09-22", "wd": "二", "week": 2, "label": "9/22（二）", "school": "① 理化　④ 國文　⑥ 數學　⑦⑧ 英文", "meta": "有課日 · 6:30–8:00 台北上課，約 8:30 到家", "hol": "", "exam": false, "min": 45, "rows": [{"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:20", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "⑦⑧兩節英文 —— 單字＋課文", "s": ""}, {"brk": false, "a": "21:20", "b": "21:35", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "⑥數學 —— 第2章開始，做3題", "s": "新章節，跟不上要早點問老師"}, {"brk": false, "a": "21:35", "b": "21:45", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "①理化／④國文 —— 今天教的重點掃一次", "s": ""}]}, {"iso": "2026-09-23", "wd": "三", "week": 2, "label": "9/23（三）", "school": "① 英文　② 數學　④⑧ 理化　⑤ 國文", "meta": "有課日 · 8:00–8:50 吉他課", "hol": "", "exam": false, "min": 45, "rows": [{"brk": false, "a": "18:00", "b": "18:20", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "④⑧兩節理化 —— 第2章，整理重點5行", "s": ""}, {"brk": false, "a": "18:20", "b": "18:35", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "②數學 —— 第2章，做3題", "s": ""}, {"brk": true, "a": "20:00", "b": "20:50", "t": "🎸 吉他課"}, {"brk": false, "a": "21:00", "b": "21:10", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "⑤國文 —— 第三課課文唸一次", "s": ""}]}, {"iso": "2026-09-24", "wd": "四", "week": 2, "label": "9/24（四）", "school": "① 理化　②⑧ 數學　③ 國文　④ 英文　⑦ 公民", "meta": "2 小時 · 打球，6:00 到家", "hol": "", "exam": false, "min": 115, "rows": [{"brk": false, "a": "18:50", "b": "19:20", "m": 30, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "②⑧兩節數學 —— 第2章，做6題", "s": "錯的打星號"}, {"brk": false, "a": "19:20", "b": "19:45", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "①理化 —— 第2章，重點＋算3題", "s": ""}, {"brk": true, "a": "19:45", "b": "19:55", "t": "休息10分"}, {"brk": false, "a": "19:55", "b": "20:10", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "公民", "t": "⑦公民 —— 第2章開始，今天教的重點", "s": ""}, {"brk": false, "a": "20:10", "b": "20:30", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "④英文 —— 單字＋課文", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "③國文 —— 第三課課文＋形音義", "s": ""}, {"brk": false, "a": "21:15", "b": "21:25", "m": 10, "kind": "預習", "kc": "k-pre", "sc": "s-she", "n": "史地", "t": "明天②歷史、⑦地理 —— 掃一遍", "s": ""}]}, {"iso": "2026-09-25", "wd": "五", "week": 2, "label": "9/25（五）", "school": "② 歷史　③⑤ 國文　⑦ 地理", "meta": "2 小時 · 5:00 到家（今天沒有數學、理化、英文）", "hol": "", "exam": false, "min": 120, "rows": [{"brk": false, "a": "17:50", "b": "18:20", "m": 30, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "歷史", "t": "②歷史 —— 第2章開始，今天教的重點", "s": ""}, {"brk": false, "a": "18:20", "b": "18:35", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "地理", "t": "⑦地理 —— 第2章開始，今天教的重點", "s": ""}, {"brk": false, "a": "18:35", "b": "19:00", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "③⑤兩節國文 —— 第三課收尾＋語文常識預告", "s": ""}, {"brk": true, "a": "19:00", "b": "19:10", "t": "休息10分"}, {"brk": false, "a": "19:10", "b": "19:30", "m": 20, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "這週(9/21–9/25)錯題重寫", "s": ""}, {"brk": false, "a": "19:30", "b": "19:45", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "這週理化計算題再算一次", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "這週英文單字總複習", "s": ""}]}, {"iso": "2026-09-26", "wd": "六", "week": 2, "label": "9/26（六）", "school": "", "meta": "自由運用 · 這週回頭撈", "hol": "", "exam": false, "min": 105, "rows": [{"brk": false, "a": "09:30", "b": "10:15", "m": 45, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "這週(9/21–9/25)教的內容，錯題全部重寫", "s": ""}, {"brk": true, "a": "10:15", "b": "10:30", "t": "休息15分"}, {"brk": false, "a": "10:30", "b": "11:00", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "這週理化計算題", "s": ""}, {"brk": false, "a": "15:30", "b": "16:00", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-guo", "n": "國文", "t": "第三課形音義總複習", "s": ""}]}, {"iso": "2026-09-27", "wd": "日", "week": 2, "label": "9/27（日）", "school": "", "meta": "有課日 · 9:00–11:30 理化／13:30–16:30 英文補習，約 5:30 到家", "hol": "", "exam": false, "min": 35, "rows": [{"brk": false, "a": "18:00", "b": "18:20", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "整理今天補習教的重點", "s": ""}, {"brk": false, "a": "18:20", "b": "18:35", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "整理今天補習教的文法／單字", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}]}, {"iso": "2026-09-28", "wd": "一", "week": 3, "label": "9/28（一）", "school": "① 數學　④⑧ 國文　⑦ 探索東亞", "meta": "2 小時 · 打球，6:00 到家 · 本週開始全範圍複習＋錯題本", "hol": "", "exam": false, "min": 105, "rows": [{"brk": false, "a": "18:50", "b": "19:20", "m": 30, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "開一本錯題本，把第1章錯過的題目抄進去", "s": "從今天起，考前只複習錯題本，不是每題重寫"}, {"brk": false, "a": "19:20", "b": "19:45", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第一課到第三課，重點整理一次", "s": ""}, {"brk": true, "a": "19:45", "b": "19:55", "t": "休息10分"}, {"brk": false, "a": "19:55", "b": "20:15", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "第1章重點整理進錯題本", "s": ""}, {"brk": false, "a": "20:15", "b": "20:30", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1+L2 單字總複習", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "社會", "t": "歷史地理公民各章重點掃一次", "s": ""}]}, {"iso": "2026-09-29", "wd": "二", "week": 3, "label": "9/29（二）", "school": "① 理化　④ 國文　⑥ 數學　⑦⑧ 英文", "meta": "有課日 · 6:30–8:00 台北上課，約 8:30 到家", "hol": "", "exam": false, "min": 35, "rows": [{"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:20", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "第2章重點整理進錯題本", "s": ""}, {"brk": false, "a": "21:20", "b": "21:35", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "第2章重點整理進錯題本", "s": ""}]}, {"iso": "2026-09-30", "wd": "三", "week": 3, "label": "9/30（三）", "school": "① 英文　② 數學　④⑧ 理化　⑤ 國文", "meta": "有課日 · 8:00–8:50 吉他課", "hol": "", "exam": false, "min": 45, "rows": [{"brk": false, "a": "18:00", "b": "18:20", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "語文常識㈠ 詞類整理", "s": ""}, {"brk": false, "a": "18:20", "b": "18:35", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "公民", "t": "第1、2章重點整理", "s": ""}, {"brk": true, "a": "20:00", "b": "20:50", "t": "🎸 吉他課"}, {"brk": false, "a": "21:00", "b": "21:10", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1+L2 文法整理", "s": ""}]}, {"iso": "2026-10-01", "wd": "四", "week": 3, "label": "10/1（四）", "school": "① 理化　②⑧ 數學　③ 國文　④ 英文　⑦ 公民", "meta": "2 小時 · 打球，6:00 到家", "hol": "", "exam": false, "min": 115, "rows": [{"brk": false, "a": "18:50", "b": "19:20", "m": 30, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "第1、2章錯題抄進錯題本", "s": ""}, {"brk": false, "a": "19:20", "b": "19:45", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "第1、2章公式總表整理", "s": ""}, {"brk": true, "a": "19:45", "b": "19:55", "t": "休息10分"}, {"brk": false, "a": "19:55", "b": "20:15", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "三課生難字詞總複習", "s": ""}, {"brk": false, "a": "20:15", "b": "20:30", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "歷史", "t": "第1、2章重點", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "地理", "t": "第1、2章重點", "s": ""}, {"brk": false, "a": "21:15", "b": "21:25", "m": 10, "kind": "回頭撈", "kc": "k-back", "sc": "s-ying", "n": "英文", "t": "L1+L2 舊考卷錯題訂正", "s": ""}]}, {"iso": "2026-10-02", "wd": "五", "week": 3, "label": "10/2（五）", "school": "② 歷史　③⑤ 國文　⑦ 地理", "meta": "2 小時 · 5:00 到家", "hol": "", "exam": false, "min": 120, "rows": [{"brk": false, "a": "17:50", "b": "18:20", "m": 30, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "公民", "t": "第1、2章考古題", "s": ""}, {"brk": false, "a": "18:20", "b": "18:35", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "地理", "t": "第1、2章讀圖練習", "s": ""}, {"brk": false, "a": "18:35", "b": "19:00", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "錯題本國文部分總複習", "s": ""}, {"brk": true, "a": "19:00", "b": "19:10", "t": "休息10分"}, {"brk": false, "a": "19:10", "b": "19:30", "m": 20, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "錯題本全部重寫一次", "s": ""}, {"brk": false, "a": "19:30", "b": "19:45", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "錯題本全部重寫一次", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1+L2 課文朗讀", "s": ""}]}, {"iso": "2026-10-03", "wd": "六", "week": 3, "label": "10/3（六）", "school": "", "meta": "自由運用 · 錯題本第2輪", "hol": "", "exam": false, "min": 105, "rows": [{"brk": false, "a": "09:30", "b": "10:15", "m": 45, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "錯題本第2輪，全部重寫", "s": ""}, {"brk": true, "a": "10:15", "b": "10:30", "t": "休息15分"}, {"brk": false, "a": "10:30", "b": "11:00", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "錯題本第2輪，全部重寫", "s": ""}, {"brk": false, "a": "15:30", "b": "16:00", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-guo", "n": "國文·社會", "t": "錯題整理，國文＋社會", "s": ""}]}, {"iso": "2026-10-04", "wd": "日", "week": 3, "label": "10/4（日）", "school": "", "meta": "有課日 · 9:00–11:30 理化／13:30–16:30 英文補習，約 5:30 到家", "hol": "", "exam": false, "min": 35, "rows": [{"brk": false, "a": "18:00", "b": "18:20", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "整理今天補習教的重點", "s": ""}, {"brk": false, "a": "18:20", "b": "18:35", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "整理今天補習教的重點", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}]}, {"iso": "2026-10-05", "wd": "一", "week": 4, "label": "10/5（一）", "school": "① 數學　④⑧ 國文　⑦ 探索東亞", "meta": "2 小時 · 打球，6:00 到家 · 第二輪：開始寫整份考卷", "hol": "", "exam": false, "min": 105, "rows": [{"brk": false, "a": "18:50", "b": "19:20", "m": 30, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "寫一份第1章小考題", "s": ""}, {"brk": false, "a": "19:20", "b": "19:45", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "寫一份第1章小考題", "s": ""}, {"brk": true, "a": "19:45", "b": "19:55", "t": "休息10分"}, {"brk": false, "a": "19:55", "b": "20:15", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第一課小考題", "s": ""}, {"brk": false, "a": "20:15", "b": "20:30", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L1 小考題", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "社會", "t": "歷史地理公民各挑5題", "s": ""}]}, {"iso": "2026-10-06", "wd": "二", "week": 4, "label": "10/6（二）", "school": "① 理化　④ 國文　⑥ 數學　⑦⑧ 英文", "meta": "有課日 · 6:30–8:00 台北上課，約 8:30 到家", "hol": "", "exam": false, "min": 35, "rows": [{"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:20", "m": 20, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "昨天小考錯題訂正", "s": ""}, {"brk": false, "a": "21:20", "b": "21:35", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "昨天小考錯題訂正", "s": ""}]}, {"iso": "2026-10-07", "wd": "三", "week": 4, "label": "10/7（三）", "school": "① 英文　② 數學　④⑧ 理化　⑤ 國文", "meta": "有課日 · 8:00–8:50 吉他課", "hol": "", "exam": false, "min": 45, "rows": [{"brk": false, "a": "18:00", "b": "18:20", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第二課小考題", "s": ""}, {"brk": false, "a": "18:20", "b": "18:35", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "公民", "t": "小考題", "s": ""}, {"brk": true, "a": "20:00", "b": "20:50", "t": "🎸 吉他課"}, {"brk": false, "a": "21:00", "b": "21:10", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "L2 小考題", "s": ""}]}, {"iso": "2026-10-08", "wd": "四", "week": 4, "label": "10/8（四）", "school": "① 理化　②⑧ 數學　③ 國文　④ 英文　⑦ 公民", "meta": "2 小時 · 打球，6:00 到家", "hol": "", "exam": false, "min": 115, "rows": [{"brk": false, "a": "18:50", "b": "19:20", "m": 30, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "寫一份第2章小考題", "s": ""}, {"brk": false, "a": "19:20", "b": "19:45", "m": 25, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "寫一份第2章小考題", "s": ""}, {"brk": true, "a": "19:45", "b": "19:55", "t": "休息10分"}, {"brk": false, "a": "19:55", "b": "20:15", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "第三課小考題", "s": ""}, {"brk": false, "a": "20:15", "b": "20:30", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "歷史·地理", "t": "小考題", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-ying", "n": "英文", "t": "L1+L2 錯題訂正", "s": ""}, {"brk": false, "a": "21:15", "b": "21:25", "m": 10, "kind": "回頭撈", "kc": "k-back", "sc": "s-guo", "n": "國文", "t": "語文常識㈠ 訂正", "s": ""}]}, {"iso": "2026-10-09", "wd": "五", "week": 4, "label": "10/9（五）", "school": "② 歷史　③⑤ 國文　⑦ 地理", "meta": "2 小時 · 5:00 到家", "hol": "", "exam": false, "min": 120, "rows": [{"brk": false, "a": "17:50", "b": "18:20", "m": 30, "kind": "回頭撈", "kc": "k-back", "sc": "s-shu", "n": "數學", "t": "這兩天小考錯題全部重寫", "s": ""}, {"brk": false, "a": "18:20", "b": "18:45", "m": 25, "kind": "回頭撈", "kc": "k-back", "sc": "s-li", "n": "理化", "t": "這兩天小考錯題全部重寫", "s": ""}, {"brk": false, "a": "18:45", "b": "19:00", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-she", "n": "社會", "t": "錯題訂正", "s": ""}, {"brk": true, "a": "19:00", "b": "19:10", "t": "休息10分"}, {"brk": false, "a": "19:10", "b": "19:30", "m": 20, "kind": "回頭撈", "kc": "k-back", "sc": "s-guo", "n": "國文", "t": "錯題本總複習", "s": ""}, {"brk": false, "a": "19:30", "b": "19:45", "m": 15, "kind": "回頭撈", "kc": "k-back", "sc": "s-ying", "n": "英文", "t": "錯題本總複習", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "粗心檢查練習 —— 數學最弱，多練一次", "s": "抄錯數字、漏看負號，這種最可惜"}]}, {"iso": "2026-10-10", "wd": "六", "week": 4, "label": "10/10（六）", "school": "", "meta": "放假 · 全科模考日（早點練完就可以放鬆）", "hol": "國慶連假", "exam": false, "min": 150, "rows": [{"brk": false, "a": "09:30", "b": "10:20", "m": 50, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "模擬考一份 —— 第1、2章", "s": ""}, {"brk": true, "a": "10:20", "b": "10:35", "t": "休息15分"}, {"brk": false, "a": "10:35", "b": "11:25", "m": 50, "kind": "複習", "kc": "k-rev", "sc": "s-shu", "n": "數學", "t": "模擬考一份 —— 第1、2章（最弱科，多花時間）", "s": ""}, {"brk": false, "a": "15:00", "b": "15:30", "m": 30, "kind": "複習", "kc": "k-rev", "sc": "s-guo", "n": "國文", "t": "模擬考選擇題部分", "s": ""}, {"brk": false, "a": "15:30", "b": "15:50", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "社會", "t": "模擬考選擇題部分", "s": ""}]}, {"iso": "2026-10-11", "wd": "日", "week": 4, "label": "10/11（日）", "school": "", "meta": "有課日 · 9:00–11:30 理化／13:30–16:30 英文補習，約 5:30 到家 · 明天段考第一天", "hol": "", "exam": false, "min": 50, "rows": [{"brk": false, "a": "18:00", "b": "18:15", "m": 15, "kind": "複習", "kc": "k-rev", "sc": "s-li", "n": "理化", "t": "整理今天補習教的重點", "s": ""}, {"brk": false, "a": "18:15", "b": "18:25", "m": 10, "kind": "複習", "kc": "k-rev", "sc": "s-ying", "n": "英文", "t": "整理今天補習教的重點", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:20", "m": 20, "kind": "回頭撈", "kc": "k-back", "sc": "s-she", "n": "全科", "t": "明天段考，五科重點各看一眼 —— 公式表、易錯字、易忘定義", "s": "不知道明天考哪幾科，五科都稍微翻一下"}, {"brk": false, "a": "21:20", "b": "21:25", "m": 5, "kind": "回頭撈", "kc": "k-back", "sc": "s-she", "n": "準備", "t": "檢查文具、准考證，早點睡", "s": "不熬夜，早睡比多讀一小時有用"}]}, {"iso": "2026-10-12", "wd": "一", "week": 5, "label": "10/12（一）", "school": "", "meta": "段考第一天 · 晚上簡單複習明天的科目就好", "hol": "段考第一天", "exam": false, "min": 40, "rows": [{"brk": false, "a": "19:00", "b": "19:20", "m": 20, "kind": "回頭撈", "kc": "k-back", "sc": "s-she", "n": "全科", "t": "今天考完的科目先不要對答案，好好休息", "s": ""}, {"brk": true, "a": "20:30", "b": "21:00", "t": "📱 手機時間 · 不排書"}, {"brk": false, "a": "21:00", "b": "21:20", "m": 20, "kind": "複習", "kc": "k-rev", "sc": "s-she", "n": "全科", "t": "明天要考的科目，重點快速翻一次 —— 公式、課文重點、易錯字", "s": "不知道明天考哪幾科，五科都稍微翻一下"}]}, {"iso": "2026-10-13", "wd": "二", "week": 5, "label": "10/13（二）", "school": "", "meta": "辛苦了，段考結束！好好放鬆一下。", "hol": "段考結束", "exam": true, "min": 0, "rows": []}];
+var WEEKS = {"1": {"guo": "第二課", "shu": "第1章", "li": "第1章", "shi": "1章", "di": "1章", "gong": "1章", "ying": "L2 起步"}, "2": {"guo": "第三課", "shu": "第1→2章", "li": "第1→2章", "shi": "1→2章", "di": "1→2章", "gong": "1→2章", "ying": "L2"}, "3": {"guo": "語文常識㈠", "shu": "全範圍複習＋錯題本", "li": "全範圍複習＋錯題本", "shi": "收尾", "di": "收尾", "gong": "收尾", "ying": "L1+L2 文法"}, "4": {"guo": "小考＋錯題訂正", "shu": "第二輪：寫題目", "li": "第二輪：寫題目", "shi": "小考＋訂正", "di": "小考＋訂正", "gong": "小考＋訂正", "ying": "小考＋訂正"}};
 (function(){
   var datesEl=document.getElementById("dates");
   var tasksEl=document.getElementById("tasks");
@@ -570,27 +342,24 @@ var WEEKS = {"1": {"guo": "第一課 田園之秋選", "shu": "第 1 章 前半"
   var wkLabel=document.getElementById("wklabel");
   var wkTopic=document.getElementById("wktopic");
   var cur=0;
-
   function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
   function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
-  function key(i,j){return "yuze.d."+DAYS[i].iso+"."+j}
-
-  function todayISO(){
-    var d=new Date();
-    return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")
-  }
+  function key(i,j){return "yuze_0914.d."+DAYS[i].iso+"."+j}
+  function todayISO(){var d=new Date();return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0")}
 
   (function(){
     var exam=new Date(2026,9,12), now=new Date(); now.setHours(0,0,0,0);
     var d=Math.round((exam-now)/86400000);
-    document.getElementById("cd").textContent = d>0?d:(d===0?0:"0");
+    document.getElementById("cd").textContent = d>0?d:0;
   })();
 
   var ti=todayISO();
   cur=0;
   for(var i=0;i<DAYS.length;i++){ if(DAYS[i].iso===ti){cur=i;break} }
   if(DAYS[cur].iso!==ti){
-    for(var i=0;i<DAYS.length;i++){ if(DAYS[i].iso>=ti){cur=i;break} }
+    var found=false;
+    for(var i=0;i<DAYS.length;i++){ if(DAYS[i].iso>=ti){cur=i;found=true;break} }
+    if(!found) cur=DAYS.length-1;
   }
 
   function loadClass(d){
@@ -631,7 +400,6 @@ var WEEKS = {"1": {"guo": "第一課 田園之秋選", "shu": "第 1 章 前半"
       var chip=datesEl.children[i];
       datesEl.scrollTo({left:chip.offsetLeft-datesEl.clientWidth/2+chip.clientWidth/2,behavior:"smooth"});
     }
-
     wkLabel.textContent = d.exam ? "段考" : ("第 "+d.week+" 週");
     var t=WEEKS[String(d.week)];
     if(t && !d.exam){
@@ -639,25 +407,19 @@ var WEEKS = {"1": {"guo": "第一課 田園之秋選", "shu": "第 1 章 前半"
       wkTopic.innerHTML='<span class="c-guo">國 '+t.guo+'</span><span class="c-shu">數 '+t.shu+'</span>'+
         '<span class="c-li">理 '+t.li+'</span><span class="c-she">社 '+t.shi+'／'+t.di+'／'+t.gong+'</span>'+
         '<span class="c-ying">英 '+t.ying+'</span>';
-    } else if(d.week===6 && !d.exam){
-      wkTopic.style.display="";
-      wkTopic.innerHTML='<span style="color:var(--pen);font-weight:700">衝刺週 · 不學新的東西，只清錯題＋寫整份考卷</span>';
     } else {
       wkTopic.style.display="none";
     }
-
     dayEl.innerHTML = d.label + (d.hol?'<span class="hol">'+d.hol+'</span>':'');
     minEl.textContent = d.min;
     schoolEl.textContent = d.school||"";
     metaEl.textContent = d.meta||"";
     tasksEl.innerHTML="";
-
     if(d.exam){
       tasksEl.innerHTML='<div class="day-exam"><span class="big">段考日</span>'+d.meta+'</div>';
-      footEl.textContent="加油。";
+      footEl.textContent="辛苦了。";
       return;
     }
-
     d.rows.forEach(function(r,j){
       if(r.brk){
         var br=document.createElement("div");
@@ -712,5 +474,4 @@ var WEEKS = {"1": {"guo": "第一課 田園之秋選", "shu": "第 1 章 前半"
   render(cur);
 })();
 </script>
-</body>
-</html>
+</body></html>
